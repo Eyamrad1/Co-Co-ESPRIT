@@ -1,0 +1,277 @@
+<!-- Sale & Revenue Start -->
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-line fa-3x text-primary"></i>
+        <div class="ms-3">
+          <p class="mb-2">Total Booking Number</p>
+          <h6 class="mb-0">{{ totalBookingNumber }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-bar fa-3x text-primary"></i>
+        <div class="ms-3">
+          <p class="mb-2">Total Marketplace sales</p>
+          <h6 class="mb-0">{{ totalUserNumber }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-area fa-3x text-primary"></i>
+        <div class="ms-3">
+          <p class="mb-2">Collocation Booking this month revenue</p>
+          <h6 class="mb-0">$1234</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-pie fa-3x text-primary"></i>
+        <div class="ms-3">
+          <p class="mb-2">Event revenue</p>
+          <h6 class="mb-0">$1234</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Sale & Revenue End -->
+
+
+<!-- Sales Chart Start -->
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-12 col-xl-6">
+      <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Carpoolings by day</h6>
+          <a href="">Show All</a>
+        </div>
+        <div style="height: 293px; width: 100%;">
+          <div style="height: 400px;">
+            <ngx-charts-bar-vertical
+              [view]="[400, 300]"
+
+              [results]="chartData2"
+              [gradient]="false"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              xAxisLabel="Day of the Week"
+              yAxisLabel="Number of Carpoolings"
+             >
+            </ngx-charts-bar-vertical>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-xl-6">
+      <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0 text-white">Carpooling Type</h6>
+          <!-- Optionally add a link for showing all data -->
+          <!-- <a href="">Show All</a> -->
+        </div>
+        <!-- Replace this div with your chart container -->
+        <div class="chart-container">
+          <!-- Your chart content will go here -->
+          <!-- For example, you can use a canvas for chart rendering -->
+          <!-- <canvas id="salse-revenue"></canvas> -->
+          <ngx-charts-bar-vertical
+            [view]="[400, 300]"
+            [results]="chartData"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            xAxisLabel="Carpooling Type"
+            yAxisLabel="Count">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Sales Chart End -->
+
+
+<!-- Recent Sales Start -->
+<div class="container-fluid pt-4 px-4">
+  <div class="bg-secondary text-center rounded p-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h6 class="mb-0">Recent booking</h6>
+      <a href="http://localhost:4200/admin/AdminBooking">Show All</a>
+    </div>
+    <div class="table-responsive">
+
+      <div class="container">
+        <div class="content-wrapper">
+          <div *ngIf="bookings" class="bookings-table">
+            <h2>Bookings</h2>
+            <style>
+              h2 {
+                color: #EB1616;
+                text-align: center;
+              }
+              /* Add style for button */
+              button.delete-button {
+                background-color: #343a40; /* Change to the desired color */
+                color: white; /* Text color */
+                border: none; /* Remove border */
+                padding: 5px 10px; /* Adjust padding */
+                border-radius: 5px; /* Optional: Add border radius */
+                cursor: pointer; /* Change cursor on hover */
+              }
+              /* Style for button hover effect */
+              button.delete-button:hover {
+                background-color: #EB1616; /* Change to a darker shade for hover effect */
+              }
+              /* Add spacing between rows */
+              table {
+                border-collapse: collapse;
+                width: 100%;
+              }
+              tr {
+                border-bottom: 1px solid #dddddd; /* Add a border between rows */
+              }
+              td, th {
+                padding: 8px; /* Adjust padding for cells */
+                text-align: left; /* Align text in cells */
+              }
+            </style>
+
+            <table>
+              <thead>
+              <tr>
+                <th>Booking ID</th>
+                <th>Reserved seats</th>
+
+
+
+                <!-- Add other necessary fields -->
+              </tr>
+              </thead>
+              <tbody>
+              <!-- Use ngFor with slice pipe to limit to first 5 bookings -->
+              <tr *ngFor="let booking of bookings.slice(0, 5)">
+                <td>{{booking.bookingID}}</td>
+                <td>{{booking.nb}}</td>
+                  <!-- Add class to button and adjust click event -->
+                <td><button class="delete-button" (click)="confirmDelete(booking.bookingID)">Delete carpooling booking</button></td>
+                <!-- Add other necessary fields -->
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Recent Sales End -->
+
+
+<!-- Widgets Start -->
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-12 col-md-6 col-xl-4">
+      <div class="h-100 bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h6 class="mb-0">Forum subjects</h6>
+          <a href="">Show All</a>
+        </div>
+        <div class="d-flex align-items-center border-bottom py-3">
+          <img class="rounded-circle flex-shrink-0" src="/assets/backOffice/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+          <div class="w-100 ms-3">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <small>15 minutes ago</small>
+            </div>
+            <span>Short message goes here...</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center border-bottom py-3">
+          <img class="rounded-circle flex-shrink-0" src="/assets/backOffice/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+          <div class="w-100 ms-3">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <small>15 minutes ago</small>
+            </div>
+            <span>Short message goes here...</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center border-bottom py-3">
+          <img class="rounded-circle flex-shrink-0" src="/assets/backOffice/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+          <div class="w-100 ms-3">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <small>15 minutes ago</small>
+            </div>
+            <span>Short message goes here...</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center pt-3">
+          <img class="rounded-circle flex-shrink-0" src="/assets/backOffice/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+          <div class="w-100 ms-3">
+            <div class="d-flex w-100 justify-content-between">
+              <h6 class="mb-0">Jhon Doe</h6>
+              <small>15 minutes ago</small>
+            </div>
+            <span>Short message goes here...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-xl-4">
+      <div class="h-100 bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Calender</h6>
+          <a href="">Show All</a>
+        </div>
+        <div id="calender"></div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-xl-4">
+      <div class="h-100 bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Users</h6>
+          <a href="/admin/getAllUsers">Show All</a>
+        </div>
+        <!--<div class="d-flex mb-2">
+          <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
+          <button type="button" class="btn btn-primary ms-2">Add</button>
+        </div>-->
+        <table>
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+

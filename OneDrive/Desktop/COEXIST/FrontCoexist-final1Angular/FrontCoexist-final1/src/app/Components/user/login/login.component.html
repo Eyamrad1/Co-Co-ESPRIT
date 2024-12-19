@@ -1,0 +1,21 @@
+<div class="container" [formGroup]="loginForm" >
+  <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">Let's go</h2>
+<br>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" formControlName="email"  >
+    </div>
+
+    <div>
+      <label for="fPassword">Password</label>
+      <input type="password" name="fPassword" id="fPassword" formControlName="password"  >
+    </div>
+<div>
+  <a class="a-auth" routerLink="/user/forgetpassword">Mot de passe oublié</a>
+  <button (click)="authenticate()" >Login</button>
+</div>
+
+
+  <br>
+  <br>
+ </div>

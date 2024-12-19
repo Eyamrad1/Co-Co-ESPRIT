@@ -1,0 +1,112 @@
+<!-- Include Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300,300italic,700' rel='stylesheet' type='text/css'>
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<!-- Include Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/materialize.css" rel="stylesheet">
+<!-- Include Magnific-popup css -->
+<link href="/assets/frontOffice/css/magnific-popup.css" rel="stylesheet">
+<!-- Include Bootstrap core CSS -->
+<link href="/assets/frontOffice/css/bootstrap.min.css" rel="stylesheet">
+<!-- Include Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/mdb.min.css" rel="stylesheet">
+<!-- Custom styles -->
+<link href="/assets/frontOffice/css/style.css" rel="stylesheet">
+<link href="/assets/frontOffice/css/responsive.css" rel="stylesheet">
+
+<!-- Custom styles for carpool container -->
+<style>
+  .carpool-container {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .carpool-details {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .carpool-details h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .booking-section {
+    margin-top: 20px;
+  }
+
+  .booking-section input[type="number"] {
+    width: 120px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .booking-section button {
+    padding: 10px 20px;
+    background-color: #ec4848;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .booking-section button:hover {
+    background-color: red;
+  }
+
+  .carpool-map-container {
+    flex: 1;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carpool-map {
+    height: 471px; /* Set the desired height */
+    width: 100%; /* Set the desired width */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>
+
+
+
+<app-header-front></app-header-front>
+<br><br><br><br><br>
+<div class="carpool-container">
+  <div class="carpool-details">
+    <h1>Carpool Details</h1>
+    <ng-container *ngIf="comparedCarpooling">
+      <p><strong>Departure Time:</strong> {{ comparedCarpooling.departureTime }}</p>
+      <p><strong>Available Seats:</strong>
+        <ng-container *ngIf="comparedCarpooling.availableSeats === 0; else seatsAvailable">
+          No seats left
+        </ng-container>
+        <ng-template #seatsAvailable>
+          {{ comparedCarpooling.availableSeats }}
+        </ng-template>
+      </p>
+      <p *ngIf="comparedCarpooling.day"><strong>Day:</strong> {{ comparedCarpooling.day }}</p>
+      <p *ngIf="comparedCarpooling.time"><strong>Time:</strong> {{ comparedCarpooling.time }}</p>
+      <p><strong>Carpooling Type:</strong> {{ comparedCarpooling.carpoolingType }}</p>
+      <p><strong>Registration Number:</strong> {{ comparedCarpooling.registrationNumber }}</p>
+      <p><strong>Price per seat:</strong> {{ comparedCarpooling.costPerSeat | currency:'dt':'symbol':'1.2-2' }}</p>
+    </ng-container>
+
+    <div class="booking-section">
+      <input type="number" [(ngModel)]="newBooking.nb" name="nb" placeholder="Enter number of seats">
+      <button (click)="addBooking(comparedCarpooling.carpoolingID)">Book This Carpool</button>
+    </div>
+  </div>
+
+  <!-- Map for Departure and Destination Locations -->
+  <div *ngIf="comparedCarpooling" [id]="'map_' + comparedCarpooling?.carpoolingID" #mapContainer class="carpool-map"></div>
+</div>

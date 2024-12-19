@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Update Event</h2>
+  <form (ngSubmit)="confirmUpdate()" #eventForm="ngForm" class="form">
+    <div class="form-group">
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" name="eventName" [(ngModel)]="event.eventName" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="eventDate">Event Date:</label>
+      <input type="date" id="eventDate" name="eventDate" [(ngModel)]="event.eventDate" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="eventDescription">Event Description:</label>
+      <textarea id="eventDescription" name="eventDescription" [(ngModel)]="event.eventDescription" required class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="eventLocation">Event Location:</label>
+      <input type="text" id="eventLocation" name="eventLocation" [(ngModel)]="event.eventLocation" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" id="image" (change)="onFileSelected($event)" name="image" accept="image/*" class="form-control-file">
+      <!-- Display image preview -->
+      <img *ngIf="imagePreview" [src]="imagePreview" alt="Image Preview" class="img-thumbnail" width="200">
+    </div>
+
+    <button type="submit" [disabled]="!eventForm.valid" class="btn btn-primary">Update Event</button>
+  </form>
+</div>

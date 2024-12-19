@@ -1,0 +1,82 @@
+<div class="sidebar pe-4 pb-3">
+  <nav class="navbar bg-secondary navbar-dark">
+    <a href="index.html" class="navbar-brand mx-4 mb-3">
+      <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>ADMIN</h3>
+    </a>
+    <div class="d-flex align-items-center ms-4 mb-4">
+      <div class="position-relative">
+        <img class="rounded-circle" src="/assets/backOffice/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+      </div>
+      <div class="ms-3">
+        <h6 class="mb-0">Jhon Doe</h6>
+        <span>Admin</span>
+      </div>
+    </div>
+    <div class="navbar-nav w-100">
+      <a href="http://localhost:4200/HomeAdmin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" (click)="toggleDropdown('carpoolingsDropdown')" aria-expanded="false"><i class="fa fa-laptop me-2"></i>Carpoolings</a>
+        <div class="dropdown-menu bg-transparent border-0" [ngClass]="{'show': isDropdownOpen('carpoolingsDropdown')}">
+          <a href="http://localhost:4200/admin/allCarpiilingsAdmin" class="dropdown-item">All Carpoolings</a>
+          <a href="http://localhost:4200/admin/allfeedback" class="dropdown-item">Last Feedbacks</a>
+        </div>
+      </div>
+      <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Collocations</a>
+      <li class="nav-item" (click)="toggleMarketPlaceDropdown($event)">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+          <span><i class="bi bi-house-heart" class="fa fa-th me-2"></i>MarketPlace</span>
+        </a>
+        <ul class="nav-dropdown" [style.display]="MarketPlaceDropdownVisible ? 'block' : 'none'"
+            style="width: 250px;">
+          <li class="nav-item">
+            <a class="nav-link" href="admin/addP">
+              <span>Add Product</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/show">
+              <span>List Products</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/updateP">
+              <span>Update</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/listOrder">
+              <span>List Order</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li class="nav-item" (click)="toggleEventDropdown($event)">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" class="nav-item nav-link">
+          <span ><i class="fa fa-keyboard me-2"></i>Event</span>
+        </a>
+        <ul class="nav-dropdown" [style.display]="EventDropdownVisible ? 'block' : 'none'"
+            style="width: 250px;">
+          <li class="nav-item">
+            <a class="nav-link" href="admin/display-event">
+              <span>Display Event</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/display-evaluation">
+              <span>Display Evaluation</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin/Graph">
+              <span>Statistic FeedBack</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+    </div>
+  </nav>
+</div>

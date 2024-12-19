@@ -1,0 +1,79 @@
+<br><br><br><br>
+<div class="p-3">
+  <h2 class="text-center">Booking made on my colocation announcements</h2>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Address</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>price</th>
+      <th>Contact</th>
+      <th>Message</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let collocationBooking of allCollocationBookings">
+      <td>{{ collocationBooking.annoncementCollocation.houseType }}</td>
+      <td>{{ collocationBooking.annoncementCollocation.address }}</td>
+      <td>{{ collocationBooking.startDate | date:'short' }}</td>
+      <td>{{ collocationBooking.endDate | date:'short' }}</td>
+      <td>{{ collocationBooking.annoncementCollocation.pricePerPerson * collocationBooking.annoncementCollocation.numPerso }}</td>
+      <td>{{  collocationBooking.telephone }}</td>
+      <td>{{  collocationBooking.message }}</td>
+      <td>
+        <div class="d-flex justify-content-between">
+          <div class="center">
+            <a  [routerLink]="['/coll-feedback/',collocationBooking.idCollocationBooking ]">Feedback</a>
+
+          </div>
+          <div>
+            <button class="btn btn-danger" (click)="handleDeleteCollocationBooking(collocationBooking)">delete</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="allCollocationBookings.length === 0">
+    <p>No rommate announcement is available at the moment.</p>
+  </div>
+
+  <!-- Modal -->
+  <!-- Button trigger modal -->
+  <div class="modal" *ngIf="showModal === true"style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+        </div>
+        <form [formGroup]="feedbackForm" (submit)="submitFeedback()">
+          <div class="modal-body">
+            <div>
+              <label for="feedBackInput">Feedback:</label>
+              <input id="feedBackInput" formControlName="feed_Back" type="text">
+
+
+            </div>
+
+            <div>
+              <label for="rateInput">Rate:</label>
+              <input id="rateInput" formControlName="rate" type="number">
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" (click)="submitFeedback()">Submit Feedback</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <button (click)="redirectToCreateCollocationBooking()">Créer une colocation</button> -->
+</div>
+

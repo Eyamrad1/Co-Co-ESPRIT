@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.feedback-form {
+  /* Add any specific styling for the form if needed */
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: gold;
+}
+
+.rating > span.filled:before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: gold;
+}

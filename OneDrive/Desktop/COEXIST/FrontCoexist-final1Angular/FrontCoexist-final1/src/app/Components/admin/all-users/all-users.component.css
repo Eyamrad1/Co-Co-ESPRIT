@@ -1,0 +1,134 @@
+
+/* display-event.component.css */
+
+.search-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+margin-top: 5px;
+  margin-bottom: 10px;/* Adjust as needed */
+}
+.users-container {
+  width: 100%;
+  float: right;
+  margin-top: 15px;
+  margin-right: 6px;
+  margin-left: 5px;
+}
+
+h2 {
+  text-align: center;
+  color: #ff0000;
+}
+
+div {
+  margin-bottom: 15px;
+}
+/* Style for the delete and update buttons */
+/* display-event.component.css */
+
+/* Style for the delete and update buttons */
+.users-container a.mat-raised-button {
+  background-color: #ff0000 !important; /* Red */
+  color: white !important; /* Text color */
+}
+
+/* Hover effect for the delete and update buttons */
+.users-container a.mat-raised-button:hover {
+  background-color: #ff0000 !important; /* Darker red on hover */
+}
+
+/* Style for the add event button */
+.users-container button.mat-raised-button {
+  background-color: #ff0000; /* Red */
+  color: white; /* Text color */
+}
+
+/* Hover effect for the add event button */
+.users-container button.mat-raised-button:hover {
+  background-color: #cc0000; /* Darker red on hover */
+}
+
+.users-container .event-table td a.mat-raised-button {
+  background-color: #ff0000 !important; /* Red */
+  color: white !important;
+}
+
+.users-container .event-table td a.mat-raised-button:hover {
+  background-color: #cc0000 !important; /* Darker red on hover */
+}
+
+
+.table-user img {
+  max-width: 150px; /* Limit the maximum width of the image */
+  max-height: 100px; /* Limit the maximum height of the image */
+  display: block; /* Ensure images don't affect the table layout */
+  margin: 0 auto; /* Center align the images horizontally */
+  text-align: center;
+}
+
+/* Remove the existing button styles */
+button {
+  background-color: #ff0000;
+  border: none;
+  /* color: white;  Remove this line */
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Add new styles for buttons inside .event-container */
+.users-container button {
+  background-color: #ff0000; /* Red */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Add hover effect */
+.users-container button:hover {
+  background-color: #ff0000; /* Darker red on hover */
+}
+
+/* Apply the same styles for mat-raised-button */
+.users-container a.mat-raised-button {
+  background-color: #ff0000; /* Red */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* Add hover effect for mat-raised-button */
+.users-container a.mat-raised-button:hover {
+  background-color: #ff0000; /* Darker red on hover */
+}
+
+.table-user {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.table-user th, .table-user td {
+  padding: 8px;
+  text-align: left;
+}
+
+.table-user th {
+  background-color: #6C7293; /* Red */
+  color: white;
+}
+
+.table-user tr:nth-child(even) {
+  background-color: #191C24; /* Light gray for even rows */
+}
+
+.table-user tr:hover {
+  background-color: #ddd; /* Darker gray on hover */
+
+}

@@ -1,0 +1,80 @@
+<br>
+<br>
+<div class="search-container">
+  <!-- Search input field -->
+  <input type="text" placeholder="Search events..." [(ngModel)]="keyword" class="search-input" (input)="search()">
+  <mat-icon>search</mat-icon>
+</div>
+
+<div class="event-container">
+  <div class="row">
+    <ng-container *ngIf="pagedProducts.length > 0; else noEventsFound">
+      <div class="col-md-4" *ngFor="let product of pagedProducts let i = index">
+        <div class="card mb-3">
+          <div class="container">
+            <div class="event-details">
+              <h5 class="card-title">{{ product.productName }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text">
+                <small class="text-muted"> {{ product.price }}Dt</small>
+              </p>
+
+
+            </div>
+
+
+            <div class="event-image">
+              <img class="card-img-top" [src]="product.img" alt="Event Image" width="250">
+            </div>
+
+
+          </div>
+          <div class="taille">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" [(ngModel)]="selectedQuantity" min="1">
+          </div>
+          <div>
+
+            <button class="btn btn-primary" (click)="addToWishlist(product)">Add to Cart</button>
+
+            <button type="button" class="btn btn-info mt-2" (click)="hideShow2(i)">Info</button>
+
+          </div>
+          <div *ngIf="hide2 && selectedCardIndex === i">
+            <div class="card">
+              <div class="card-header">
+                <h5>Product Information</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text">Product Name : {{ product.productName }}</p>
+                <p class="card-text">Description : {{ product.description }}</p>
+                <p class="card-text">Price : {{ product.price }}</p>
+                <p class="card-text">Stock : {{ product.stock }}</p>
+                <p class="card-text">Type : {{ product.type }}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </ng-container>
+    <!-- Display message when no events are found -->
+    <ng-template #noEventsFound>
+      <div class="col-md-12 text-center no-events-found-container">
+        <h3 class="no-events-found-message">No events found.</h3>
+        <img [src]="'assets/notfound.png'" class="no-events-found-image">
+      </div>
+    </ng-template>
+  </div>
+
+</div>
+
+
+<!-- Pagination -->
+<div class="pagination-container">
+  <button mat-button [disabled]="currentPage === 1" (click)="onPrevPage()">Previous</button>
+  <span>{{ currentPage }} / {{ totalPages() }}</span>
+  <button mat-button [disabled]="currentPage === totalPages()" (click)="onNextPage()">Next</button>
+</div>
+
+

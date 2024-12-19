@@ -1,0 +1,157 @@
+<br><br><br><br>
+<div class="w-100 ">
+  <div class="container    ">
+    <div class="  ">
+
+      <div *ngIf="announcement">
+
+        <h3></h3>
+        <div class="row w-100">
+          <div class="col-8">
+            <div class="card">
+              <div class="p-5">
+                <div class="text-center mb-2 font-weight-bolder "><h2>Book this colocation announcement</h2></div>
+                <div class=" ">
+                  <form [formGroup]="newCollocationBookingFormGroup" (ngSubmit)="handleSaveCollocationBooking()">
+                    <div class="d-flex mb-1 align-items-center">
+                      <label class="form-label w-25">Start Date:</label>
+                      <input type="date" formControlName="startDate" class="form-control" [min]="minDate">
+                      <span class="text-danger"
+                            *ngIf="newCollocationBookingFormGroup.controls['startDate'].touched
+                 && newCollocationBookingFormGroup.controls['startDate'].errors
+                 && newCollocationBookingFormGroup.controls['startDate'].errors!['required']">
+        La date de début est requise
+    </span>
+                    </div>
+
+                    <div class="d-flex mb-1 align-items-center">
+                      <label class="form-label w-25">End Date:</label>
+                      <input type="date" formControlName="endDate" class="form-control" [min]="minDate">
+                      <span class="text-danger"
+                            *ngIf="newCollocationBookingFormGroup.controls['endDate'].touched
+                 && newCollocationBookingFormGroup.controls['endDate'].errors
+                 && newCollocationBookingFormGroup.controls['endDate'].errors!['required']">
+        La date de fin est requise
+    </span>
+                    </div>
+
+                    <div class="d-flex mb-1 align-items-center">
+                      <label class="form-label w-25">Phone Number:</label>
+                      <input type="text" formControlName="telephone" class="form-control">
+                      <span class="text-danger"
+                            *ngIf="newCollocationBookingFormGroup.controls['telephone'].touched
+                       && newCollocationBookingFormGroup.controls['telephone'].errors
+                       && newCollocationBookingFormGroup.controls['telephone'].errors!['required']">
+                   Le Téléphone est requise
+                 </span>
+                    </div>
+                    <div class="d-flex mb-1 align-items-center">
+                      <label class="form-label w-25">Message:</label>
+                      <textarea type="text" formControlName="message" class="form-control"></textarea>
+                      <span class="text-danger"
+                            *ngIf="newCollocationBookingFormGroup.controls['message'].touched
+                       && newCollocationBookingFormGroup.controls['message'].errors
+                       && newCollocationBookingFormGroup.controls['message'].errors!['required']">
+                   le Message est requise
+                 </span>
+                    </div>
+
+                    <!-- Vous pouvez ajouter d'autres champs au besoin en fonction de votre modèle de classe -->
+                    <button [disabled]="!newCollocationBookingFormGroup.valid" class="btn btn-info" (click)="handelLoading()">SAVE</button>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="estate-card">
+              <ngx-slick-carousel class="carousel w-auto h-auto" #slickModal="slick-carousel" [config]="slideConfig" style="border-radius: 20px; ">
+                <div ngxSlickItem *ngFor="let slide of announcement.images" class="slide">
+                  <img [src]="'data:'+slide.type+';base64,' + slide.data " alt="" width="100%">
+                </div>
+              </ngx-slick-carousel>
+              <div class="estate-badges badges ">
+                <container-element [ngSwitch]="announcement.etat">
+                  <span class="green" *ngSwitchCase="'AVAILABLE'">AVAILABLE</span>
+                  <p class="yellow" *ngSwitchCase="'IN_PROGRESS'">IN PROCESS</p>
+                  <p class="red" *ngSwitchCase="'BOOKED'">BOOKED</p>
+
+                  <p class="green" *ngSwitchDefault>AVAILABLE</p>
+                </container-element>
+              </div>
+              <div class="estate-card-box-data"><!---->
+
+                <div class="estate-card-price">
+
+                  <div class="estate-card-current-price">
+                    {{ announcement.pricePerPerson * announcement.numPerso }} DT
+                  </div> <!---->
+                  <div style="margin: 0.5rem;">
+                    <ng-container *ngIf=" announcement.averageRating  > 0">
+                      <div [ngClass]="[star.class]  " *ngFor="let star of stars.slice(0, announcement.averageRating)">
+                        <mat-icon class="mat-icon d-flex align-items-center w-auto">{{star.icon}}</mat-icon>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="estate-card-user-buttons">
+                    <img src="assets/frontOffice/img/icons/rooms.svg" alt="masque" width="20" height="20">
+                    <span class="estate-card-subtitle"> {{ announcement.homeSize }} </span>
+
+                    <img src="assets/frontOffice/img/icons/profile.svg" alt="masque" width="20" height="20">
+                    <span class="estate-card-subtitle"> {{ announcement.numPerso }} </span>
+
+                  </div>
+                </div>
+
+                <div class="estate-card-titles-container">
+                  <div class="estate-card-titles">
+                    <h3 class="estate-card-title">
+                      {{announcement.address}}
+                    </h3>
+                    <h4 class="estate-card-subtitle">
+                      {{announcement.houseType}} - {{ announcement.equipmentType }}
+                    </h4>
+                  </div>
+                </div>
+                <hr *ngIf="announcement.feedbackMap"/>
+                <h5 *ngIf="announcement.feedbackMap">Feedback</h5>
+                <div *ngIf="announcement.feedbackMap" class="row p-3">
+                  <ngx-slick-carousel class="carousel w-auto h-auto" #slickModal="slick-carousel" [config]="slideConfig" style="border-radius: 20px; ">
+                    <div ngxSlickItem *ngFor="let feedback of announcement.feedbackMap" class="slide">
+                      <h3 class="text-black-50 text-center">{{feedback.feed_Back}}</h3>
+                      <div class="d-flex justify-content-center">
+                        <div  *ngFor="let star of stars" [ngClass]="[star.class]  " >
+                          <mat-icon class="text-center">{{star.icon}}</mat-icon>
+                        </div>
+                      </div>
+                    </div>
+                  </ngx-slick-carousel>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal"  *ngIf="loading === true" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body d-flex justify-content-center">
+        <mat-spinner  ></mat-spinner>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

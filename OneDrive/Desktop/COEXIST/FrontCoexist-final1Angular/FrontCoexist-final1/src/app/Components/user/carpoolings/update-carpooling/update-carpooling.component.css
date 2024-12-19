@@ -1,0 +1,159 @@
+#carpoolingForm {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+#carpoolingForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#carpoolingForm input[type="text"],
+#carpoolingForm input[type="number"],
+#carpoolingForm select,
+#carpoolingForm input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#carpoolingForm button[type="submit"] {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#carpoolingForm button[type="submit"]:hover {
+    background-color: #c82333;
+}
+/* component.scss */
+:host ::ng-deep form {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+:host ::ng-deep form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+:host ::ng-deep form input[type="text"],
+:host ::ng-deep form input[type="number"],
+:host ::ng-deep form select,
+:host ::ng-deep form input[type="datetime-local"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+:host ::ng-deep form button[type="submit"] {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+:host ::ng-deep form button[type="submit"]:hover {
+    background-color: #c82333;
+}
+.form-container {
+    margin-top: 40px; /* Move the form down a bit */
+}
+
+form {
+    margin-top: 0; /* Remove margin-top from form */
+}
+
+#longitudeDeparture,
+#latitudeDeparture,
+#longitudeDestination,
+#latitudeDestination,
+#availableSeats,
+#costPerSeat,
+#registrationNumber {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+select,
+input[type='time'],
+input[type='datetime-local'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button[type='submit'] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type='submit']:hover {
+    background-color: #45a049;
+}
+
+.form-container {
+    width: 50%; /* Adjust width as needed */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.carpooling-form {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.carpooling-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.carpooling-form input,
+.carpooling-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.carpooling-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #c82333;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.conditional-fields {
+    margin-top: 10px;
+}
+#map {
+  height: 400px; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
+}

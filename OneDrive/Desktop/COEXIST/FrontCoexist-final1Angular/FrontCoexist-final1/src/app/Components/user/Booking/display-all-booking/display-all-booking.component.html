@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="content-wrapper">
+    <div *ngIf="bookings" class="bookings-table">
+      <h2>Bookings</h2>
+      <style>
+        h2 {
+          color: #dc3545;
+          text-align: center;
+        }
+      </style>
+
+      <table>
+        <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>NB</th>
+          <th>Passenger</th> <!-- Fixed the td tag to th for table header -->
+          <!-- Add other necessary fields -->
+          <th>Action</th> <!-- Added a column header for action -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let booking of bookings | paginate: { itemsPerPage: 3, currentPage: p }">
+          <td>{{ booking.bookingID }}</td>
+          <td>{{ booking.nb }}</td>
+          <td>{{ booking.user.username }}</td>
+          <td>
+            <button (click)="confirmDelete(booking.bookingID)">Delete carpooling booking</button>
+          </td>
+          <!-- Add other necessary fields -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<pagination-controls class="custom-pagination" (pageChange)="p = $event"></pagination-controls>
+
+<app-all-template-front></app-all-template-front>

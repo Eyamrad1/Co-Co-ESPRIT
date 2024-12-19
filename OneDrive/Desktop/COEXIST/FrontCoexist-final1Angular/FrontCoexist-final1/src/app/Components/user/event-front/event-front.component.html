@@ -1,0 +1,59 @@
+
+
+<div class="eventsss">
+  <div class="search-container">
+    <!-- Search input field -->
+    <input type="text" placeholder="Search events..." [(ngModel)]="keyword" class="search-input" (input)="search()">
+    <mat-icon>search</mat-icon>
+  </div>
+  <h2>Here are some of our events</h2>
+
+  <div class="event-container">
+    <ng-container *ngIf="pagedEventsGrouped.length > 0; else noEventsFound">
+      <!-- Iterate over pagedEventsGrouped to display events -->
+      <div *ngFor="let row of pagedEventsGrouped; let rowIndex = index" class="row">
+        <div class="col-md-4" *ngFor="let event of row; let colIndex = index">
+          <div class="card mb-3">
+            <!-- Event card content -->
+            <img class="card-img-top" [src]="event.imageUrl" alt="Event Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ event.eventName }}</h5>
+              <div class="like-dislike-share-buttons">
+                <!-- Like button -->
+                <button mat-icon-button color="primary" aria-label="Like" (click)="addOrUpdateReaction(event.eventId,this.userId, true)">
+                  <mat-icon>thumb_up</mat-icon>
+                </button>
+                <span>{{ event.likeCount }}</span>
+
+                <!-- Dislike button -->
+                <button mat-icon-button color="warn" aria-label="Dislike" (click)="addOrUpdateReaction(event.eventId,this.userId, false)">
+                  <mat-icon>thumb_down</mat-icon>
+                </button>
+                <span>{{ event.dislikeCount }}</span>
+                <button mat-icon-button color="primary" aria-label="Share" (click)="shareOnFacebook(event.eventId)">
+                  <mat-icon>send</mat-icon>
+                </button>
+              </div>
+              <a [routerLink]="['/user/details', event.eventId]" class="view-details-link">View More Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Display message when no events are found -->
+    <ng-template #noEventsFound>
+      <div class="col-md-12 text-center no-events-found-container">
+        <h3 class="no-events-found-message">No events found.</h3>
+        <img [src]="'assets/notfound.png'" class="no-events-found-image">
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-container">
+    <button mat-button [disabled]="currentPage === 1" (click)="onPrevPage()">Previous</button>
+    <span>{{ currentPage }} / {{ totalPages() }}</span>
+    <button mat-button [disabled]="currentPage === totalPages()" (click)="onNextPage()">Next</button>
+  </div>
+</div>

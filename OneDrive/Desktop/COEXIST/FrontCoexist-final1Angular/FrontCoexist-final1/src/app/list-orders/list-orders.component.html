@@ -1,0 +1,39 @@
+
+<div class="event-container">
+  <div class="row">
+    <ng-container *ngIf="pagedProducts.length > 0; else noEventsFound">
+      <div class="col-md-4" *ngFor="let cart of pagedProducts let i = index">
+        <div class="card mb-3">
+          <div class="container">
+            <div class="event-details">
+              <h5 class="card-title">{{ cart.totalPrice }}</h5>
+
+            </div>
+
+
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </ng-container>
+    <!-- Display message when no events are found -->
+    <ng-template #noEventsFound>
+      <div class="col-md-12 text-center no-events-found-container">
+        <h3 class="no-events-found-message">No events found.</h3>
+        <img [src]="'assets/notfound.png'" class="no-events-found-image">
+      </div>
+    </ng-template>
+  </div>
+
+</div>
+
+
+<!-- Pagination -->
+<div class="pagination-container">
+  <button mat-button [disabled]="currentPage === 1" (click)="onPrevPage()" class="button-icon">Previous</button>
+  <span>{{ currentPage }} / {{ totalPages() }}</span>
+  <button mat-button [disabled]="currentPage === totalPages()" (click)="onNextPage()" class="button-icon">Next</button>
+</div>

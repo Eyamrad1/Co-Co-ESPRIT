@@ -1,0 +1,7 @@
+export enum Etat {
+    AVAILABLE = 'AVAILABLE',
+    IN_PROGRESS = 'IN_PROGRESS',
+    BOOKED = 'BOOKED',
+    NOT_AVAILABLE = 'NOT_AVAILABLE',
+   }
+  

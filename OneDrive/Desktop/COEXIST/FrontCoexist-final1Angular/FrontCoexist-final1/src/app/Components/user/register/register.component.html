@@ -1,0 +1,108 @@
+<div class="container " >
+  <div class="row  ">
+    <div class="col-md-6 card custom-card2 shadow bg-body-tertiary p-3 mb-5">
+      <div class="card-body">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2 class="text-center mb-5">Register</h2>
+        <form class="" [formGroup]="registerForm" (ngSubmit)="register()">
+
+          <!--          username-->
+          <div>
+            <label for="username">username</label>
+            <input type="text" id="username" name="username" formControlName="username" >
+          </div>
+          <!--          email-->
+          <div class="form-floating mb-3">
+            <label for="fEmail">Email address</label>
+            <input formControlName="email" type="email" class="form-control mb-2" id="fEmail" placeholder="">
+          </div>
+          <!--          password-->
+          <div >
+            <div class="form-floating mb-1">
+              <label for="fPassword1" class="ms-3">Password</label>
+              <input formControlName="password" type="password" class="form-control mb-2" id="fPassword1" placeholder="">
+            </div>
+          </div>
+
+          <div>
+            <label for="phoneNumber">phoneNumber</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" >
+          </div>
+
+          <label for="roleName">RoleName:</label>
+          <select id="roleName" name="roleName" class="form-control" formControlName="roleName">
+            <option value="STUDENT">STUDENT</option>
+            <option value="DRIVER">DRIVER</option>
+          </select>
+          <div>
+            <label for="Address">Address</label>
+            <input type="text" id="Address" name="Address" formControlName="Address" >
+          </div>
+
+          <!-- Image (file input) -->
+          <div class="row">
+            <div class="mb-3 col-md-5">
+              <label for="profileImage" class="form-label ms-1">Profile Image</label>
+              <input type="file" class="form-control" id="profileImage" (change)="onFileChange($event)"/>
+            </div>
+          </div>
+
+          <input  type="checkbox" class="m-2" value="connected">By clicking Sign Up, you agree to our <a class="a-auth"
+                                                                                                         routerLink="#">Terms</a>,
+          <a class="a-auth" routerLink="#">Privacy Policy</a> and <a class="a-auth" routerLink="#">Cookies Policy</a>.
+          <button type="submit" class="btn custom-btn2 mt-4 mb-2" [disabled]="registerForm.valid" >Sign Up</button>
+          <a class="ms-2" routerLink="/user/authenticate"> You have already an account, login</a>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="container" [formGroup]="registerForm" >
+  <h2>Register</h2>
+  <br>
+  <div class="row">
+    <div class="mb-3 col-md-5">
+      <label for="profileImage" class="form-label ms-1">Profile Image</label>
+      <input type="file" class="form-control" id="profileImage" (change)="onFileChange($event)"/>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div>
+      <label for="name">Name:</label>
+      <input type="text"  name="name" id="name" formControlName="name" >
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" formControlName="email"  >
+    </div>
+    <div>
+      <label for="fPassword">Password</label>
+      <input type="password" name="fPassword" id="fPassword" formControlName="password">
+    </div>
+    <div>
+      <label for="phoneNumber">phoneNumber</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" >
+    </div>
+
+    <label for="roleName">RoleName:</label>
+    <select id="roleName" name="roleName" class="form-control" formControlName="roleName">
+      <option value="STUDENT">STUDENT</option>
+      <option value="DRIVER">DRIVER</option>
+    </select>
+    <div>
+      <label for="Address">Address</label>
+      <input type="text" id="Address" name="Address" formControlName="Address" >
+    </div>
+    <button (click)="register()">Sign Up</button>
+
+</div>
+-->

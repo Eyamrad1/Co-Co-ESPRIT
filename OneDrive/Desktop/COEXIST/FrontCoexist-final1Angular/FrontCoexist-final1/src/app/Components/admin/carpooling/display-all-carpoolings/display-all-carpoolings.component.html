@@ -1,0 +1,86 @@
+<h2>The list Carpools</h2>
+<!-- Add a dropdown menu for selecting carpooling type -->
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <label for="carpoolingType">Filter by Carpooling Type:</label>
+    <select id="carpoolingType" [(ngModel)]="selectedCarpoolingType" (change)="filterCarpoolsByType()">
+      <option value="">All</option>
+      <option *ngFor="let type of carpoolingTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+  <div class="filter-container">
+    <input type="text" id="departurePlace" [(ngModel)]="departureLocationFilter" (input)="filterCarpoolsByDeparture()" placeholder="Search by Departure Place:" class="search-input">
+  </div>
+
+
+  <div class="filter-container">
+    <label for="day">Select Day:</label>
+    <select id="day" [(ngModel)]="selectedDay" (change)="filterByDay()">
+      <option value="">All</option>
+      <option value="MONDAY">Monday</option>
+      <option value="TUESDAY">Tuesday</option>
+      <option value="WEDNESDAY">Wednesday</option>
+      <option value="THURSDAY">Thursday</option>
+      <option value="FRIDAY">Friday</option>
+      <!-- Add other days as needed -->
+    </select>
+  </div>
+</div>
+
+<style>
+
+  h2 {
+    color: #dc3545;
+    text-align: center;
+  }
+  .carpool-map {
+    height: 500px; /* Adjust the height as needed */
+    width: 920px;
+    margin-bottom: 20px;
+  }
+  .filter-container {
+    margin-bottom: 20px;
+  }
+  .filter-container label {
+    margin-right: 10px;
+  }
+  .carpool-container {
+    display: flex;
+    flex-direction: column; /* This will stack the carpoolings vertically */
+    align-items: center; /* This will center the carpoolings horizontally */
+  }
+  .carpool-card {
+    width: 80%; /* Adjust this to change the width of the carpoolings */
+    margin-bottom: 20px; /* This will add some space between the carpoolings */
+    flex: 1 0 auto; /* Allow each card to grow and shrink as needed */
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  button {
+    margin: 0 10px 10px 0; /* This adds a 10px space to the right and bottom of each button */
+    border-radius: 6px; /* This makes the buttons rounder */
+    background: #191C24;
+    color: #6C7293;
+  }
+</style>
+
+<div class="carpool-container">
+  <div class="carpool-card" *ngFor="let carpool of carpoolings">
+    <p><strong>Departure Time:</strong> {{ carpool.departureTime }}</p>
+    <p><strong>Available Seats:</strong> {{ carpool.availableSeats }}</p>
+    <p><strong>Cost Per Seat:</strong>  {{ carpool.costPerSeat | currency:'dt':'symbol':'1.2-2' }}</p>
+    <p><strong>Day:</strong> {{ carpool.day }}</p>
+    <p><strong>Time:</strong> {{ carpool.time }}</p>
+    <p><strong>Carpooling Type:</strong> {{ carpool.carpoolingType }}</p>
+    <p><strong>Registration Number:</strong> {{ carpool.registrationNumber }}</p>
+     <button (click)="confirmDelete(carpool.carpoolingID)">Delete Carpooling</button>
+
+    <div id="map_{{ carpool.carpoolingID }}" class="carpool-map"></div>
+  </div>
+</div>
+<div>
+  <p>DAILY Carpoolings: {{this.daily }}</p>
+  <p>SPECIFIC Carpoolings: {{ this.specifics }}</p>
+</div>

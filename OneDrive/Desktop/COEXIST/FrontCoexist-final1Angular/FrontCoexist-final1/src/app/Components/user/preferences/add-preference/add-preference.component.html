@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add your preference</title>
+  <style>
+    h2 {
+      color: #dc3545;
+      text-align: center;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container label {
+      margin-bottom: 5px;
+    }
+
+    .form-container input,
+    .form-container select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .form-container button {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .form-container a {
+      color: red;
+      font-size: larger;
+      margin-top: 10px;
+      text-align: center;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300,300italic,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+<!-- Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/materialize.css" rel="stylesheet">
+
+<!-- Magnific-popup css -->
+<link href="/assets/frontOffice/css/magnific-popup.css" rel="stylesheet">
+
+<!-- Bootstrap core CSS -->
+<link href="/assets/frontOffice/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+<!--<link href="css/progressbar.css" rel="stylesheet">-->
+
+<!-- Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/mdb.min.css" rel="stylesheet">
+<link rel="preload" href="assets/frontOffice/font/roboto/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+
+
+<!-- Your custom styles (optional) -->
+<link href="/assets/frontOffice/css/style.css" rel="stylesheet">
+<link href="/assets/frontOffice/css/responsive.css" rel="stylesheet">
+
+
+<app-header-front></app-header-front><br><br><br><br><br>
+
+<h2>Add Preference</h2>
+<br><br>
+<div id="map" ></div>
+
+<form [formGroup]="preferanceForm" (ngSubmit)="addPreference()" class="form-container">
+  <label for="availableSeats">Available Seats:</label>
+  <input id="availableSeats" type="number" formControlName="availableSeats" placeholder="Enter availableSeats(1..5)">
+  <span *ngIf="preferanceForm.get('availableSeats')?.invalid && preferanceForm.get('availableSeats')?.touched">Invalid</span>
+
+  <label for="costPerSeat">Cost Per Seat:</label>
+  <input id="costPerSeat" type="number" formControlName="costPerSeat" placeholder="Enter cost per seat in dinars">
+  <span *ngIf="preferanceForm.get('costPerSeat')?.invalid && preferanceForm.get('costPerSeat')?.touched">Invalid</span>
+
+  <label for="carpoolingType">Carpooling Type:</label>
+  <select id="carpoolingType" formControlName="carpoolingType">
+    <option value="DAILY">daily</option>
+    <option value="SPECIFIC">SPECIFIC</option>
+  </select>
+
+  <label for="day">Day:</label>
+  <select id="day" formControlName="day">
+    <option value="MONDAY">Monday</option>
+    <option value="TUESDAY">Tuesday</option>
+    <option value="WEDNESDAY">Wednesday</option>
+    <option value="THURSDAY">Thursday</option>
+    <option value="FRIDAY">Friday</option>
+  </select>
+
+  <label for="time">Time:</label>
+  <input id="time" type="time" formControlName="time" placeholder="Enter longitudeDeparture">
+
+  <label for="departureTime">Departure Time:</label>
+  <input id="departureTime" type="datetime-local" formControlName="departureTime" placeholder="Enter longitudeDeparture">
+
+  <button type="submit">Add Preference</button>
+  <a href="http://localhost:4200/home" style="color: red; font-size: larger;">back</a>
+</form>
+<app-footer-front></app-footer-front>
+
+<script type="text/javascript" src="/assets/frontOffice/js/jquery-2.2.3.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/assets/frontOffice/js/tether.min.js"></script>
+
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/assets/frontOffice/js/bootstrap.min.js"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/assets/frontOffice/js/mdb.min.js"></script>
+
+<!-- Wow js -->
+<script type="text/javascript" src="/assets/frontOffice/js/wow.min.js"></script>
+
+<!-- Mixitup js -->
+<script type="text/javascript" src="/assets/frontOffice/js/jquery.mixitup.min.js"></script>
+
+<!-- Magnific-popup js -->
+<script type="text/javascript" src="/assets/frontOffice/js/jquery.magnific-popup.js"></script>
+
+<!-- accordion js -->
+<script type="text/javascript" src="/assets/frontOffice/js/accordion.js"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/assets/frontOffice/js/materialize.js"></script>
+
+<script>
+  $(".button-collapse").sideNav();
+</script>
+
+<!-- wow js active -->
+<script type="text/javascript">
+  new WOW().init();
+</script>
+
+<script type="text/javascript" src="/assets/frontOffice/js/plugins.js"></script>
+<script type="text/javascript" src="/assets/frontOffice/js/main.js"></script>
+
+</body>
+</html>
+

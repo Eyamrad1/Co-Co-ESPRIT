@@ -1,0 +1,94 @@
+<br><br><br><br>
+<div class="container" >
+  <div class="card ">
+    <div class="card-header">UPDATE COLOCATION ANNOUNCEMENT</div>
+    <div class="card-body">
+      <form [formGroup]="updateAnnouncementFormGroup" (ngSubmit)="handleUpdateAnnouncement()">
+        <div class="row">
+
+          <div class="mb-3 col-6">
+            <label class="form-label">Area :</label>
+            <input type="number" formControlName="homeSize" class="form-control">
+            <span class="text-danger"
+                  *ngIf="updateAnnouncementFormGroup.controls['homeSize'].touched
+                  && updateAnnouncementFormGroup.controls['homeSize'].errors
+                  && updateAnnouncementFormGroup.controls['homeSize'].errors!['required']">
+              La taille est requise
+            </span>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">Nombre de Personnes:</label>
+            <input type="number" formControlName="numPerso" class="form-control">
+          </div>
+
+          <div class="mb-3 col-6">
+            <label class="form-label">Address :</label>
+            <input type="text" formControlName="address" class="form-control">
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">Price per Person :</label>
+            <input type="number" formControlName="pricePerPerson" class="form-control">
+          </div>
+
+
+          <div class="mb-3 col-6">
+            <label class="form-label">House Type:</label>
+            <div>
+              <input type="radio" id="villa" name="houseType" value="VILLA" formControlName="houseType" class="form-control" checked>
+              <label for="villa">VILLA</label>
+            </div>
+            <div>
+              <input type="radio" id="apartment" name="houseType" value="APARTMENT" formControlName="houseType" class="form-control">
+              <label for="apartment">APARTMENT</label>
+            </div>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">Equipement :</label>
+            <div>
+              <input type="radio" id="meuble" name="equipmentType" value="MEUBLE" formControlName="equipmentType" class="form-control">
+              <label for="meuble">FURNISHED</label>
+            </div>
+            <div>
+              <input type="radio" id="non-meuble" name="equipmentType" value="NON_MEUBLE" formControlName="equipmentType" class="form-control">
+              <label for="non-meuble">UNFURNISHED</label>
+            </div>
+          </div>
+          <div class="mb-3 col-6">
+            <div *ngFor="let image of imageUrls; let i = index" class="d-flex justify-content-between align-items-center">
+              <div>
+                <img *ngIf="image" class="rounded-circle" [src]="image" alt="Uploaded Image" width="60" height="50">
+              </div>
+              <div>
+                <button type="button" class="btn btn-sm btn-danger" (click)="deleteImage(i)">Delete</button>
+              </div>
+            </div>
+            <div *ngFor="let image of announcement.images; let i = index" class="d-flex justify-content-between align-items-center">
+              <div>
+                <img *ngIf="image" class="rounded-circle" [src]="'data:'+image.type+';base64,' + image.data " alt="Uploaded Image" width="60" height="50">
+              </div>
+              <div>
+                <button type="button" class="btn btn-sm btn-danger" (click)="deleteImageOldPhotos(i)">DELETE</button>
+              </div>
+            </div>
+            <div>
+              <input type="file" id="file" accept="image/*" multiple (change)="onFileChange($event)" aria-label="File browser example">
+            </div>
+          </div>
+          <div class="mb-3 col-6">
+            <label class="form-label">Etat:</label>
+            <select id="etat" formControlName="etat">
+              <option class="green" value="AVAILABLE">AVAILABLE</option>
+              <option class="yellow" value="IN_PROGRESS">IN PROCESS</option>
+              <option class="red" value="BOOKED">BOOKED</option>
+          </select>
+          </div>
+          <div class=" col-6 ">
+            </div>
+          <div class=" col-6 ">
+             <button [disabled]="!updateAnnouncementFormGroup.valid" class="btn btn-info w-100">UPDATE</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

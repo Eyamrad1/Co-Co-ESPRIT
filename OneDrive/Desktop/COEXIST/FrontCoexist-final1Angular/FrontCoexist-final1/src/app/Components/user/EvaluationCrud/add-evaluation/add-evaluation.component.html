@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Event Feedback</h2>
+
+  <form *ngIf="event" [formGroup]="feedbackForm" (ngSubmit)="confirmevaluation()">
+    <label class="feedback-label">How was the event?</label>
+    <div class="gif-buttons-container">
+      <img src="../../assets/sad.gif" alt="Sad Icon" width="100" height="100" (click)="submitFeedback('BAD')" [class.clicked]="clickedGif === 'BAD'">
+      <img src="../../assets/happy.gif" alt="Happy Icon" width="100" height="100" (click)="submitFeedback('GOOD')" [class.clicked]="clickedGif === 'GOOD'">
+      <img src="../../assets/average.gif" alt="Average Icon" width="100" height="100" (click)="submitFeedback('AVERAGE')" [class.clicked]="clickedGif === 'AVERAGE'">
+    </div>
+
+    <br>
+
+    <label class="feedback-label"><mat-icon>comment</mat-icon> Leave Your Comment</label>
+    <input type="text" id="comment" name="comment" formControlName="comment" class="form-control" required>
+
+    <button mat-raised-button color="warn" type="submit" class="btn btn-primary" [disabled]="!feedbackForm.valid">
+      <mat-icon>add</mat-icon> Add feedback
+    </button>
+  </form>
+
+  <div *ngIf="!event">
+    <p>Loading event details...</p>
+  </div>
+</div>

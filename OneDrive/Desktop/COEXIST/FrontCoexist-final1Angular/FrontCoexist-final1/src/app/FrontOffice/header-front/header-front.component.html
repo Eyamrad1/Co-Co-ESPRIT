@@ -1,0 +1,96 @@
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+  <!--Collapse button-->
+  <div class="container">
+    <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="fa fa-bars black-text"></i></a>
+    <div class="navbar-desktop" *ngIf="!isconn ; else inconn">
+      <ul class="nav navbar-nav pull-right hidden-md-down text-uppercase">
+        <li style="float:right;">
+          <img src="/assets/frontOffice/img/coexist1-removebg-preview.png" alt="Your Logo" height="50" width="150" translate="yes"/>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:4200/home" style="padding: 5px 10px; font-size: 13px;">HOME <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://localhost:4200/displayCarpooling" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 5px 10px; font-size: 13px;">
+            CARPOOLINGS
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="padding: 5px !important; font-size: 12px !important;">
+            <a class="dropdown-item" href="http://localhost:4200/displayCarpooling">see all carpoolings</a>
+            <a class="dropdown-item" href="http://localhost:4200/addPrefernce">put your preference</a>
+            <a class="dropdown-item" href="http://localhost:4200/addCar">add your carpool</a>
+            <a class="dropdown-item" href="http://localhost:4200/allBooking">bookings</a>
+          </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-btn" style="padding: 5px 10px; font-size: 13px;" >COLLOCATION</a>
+            <div class="dropdown-menu">
+              <div class="menu-item">
+                <a class="text-smaller bold-text" [routerLink]="['/annColl/']">ANNOUNCEMENTS</a>
+              </div>
+              <hr class="menu-divider">
+              <div class="menu-item">
+                <a class="text-smaller bold-text" [routerLink]="['/favoris/']">FAVORIS</a>
+              </div>
+              <hr class="menu-divider">
+              <div class="menu-item">
+                <a class="text-smaller bold-text" [routerLink]="['/myAnnColl/']">MY ANNOUNCEMENTS</a>
+              </div>
+              <hr class="menu-divider">
+              <div class="menu-item">
+                <a class="text-smaller bold-text" [routerLink]="['/booColl/']">MY BOOKINGS</a>
+              </div>
+              <hr class="menu-divider">
+              <div class="menu-item">
+                <a class="text-smaller bold-text" [routerLink]="['/anncollarchive/']">ARCHIVES</a>
+              </div>
+            </div>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:4200/user/events" style="padding: 5px 10px; font-size: 13px;">OUR EVENTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/product" style="padding: 5px 10px; font-size: 13px;">MARKETPLACE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#portfolio" style="padding: 5px 10px; font-size: 13px;">FORUM & CHAT ROOM</a>
+        </li>
+        <ng-container *ngIf="!isconn ; else inconn">
+        <li class="nav-item">
+          <a class="nav-link" href="user/authenticate" style="padding: 5px 10px; font-size: 13px;">LOG IN</a>
+        </li>
+        <li class="nav-item fixed-signup">
+          <a class="nav-link" href="user/register" style="padding: 5px 10px; font-size: 13px;">SIGN UP</a>
+        </li>
+        </ng-container>
+        <ng-template #inconn>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/logout" style="padding: 5px 10px; font-size: 13px;">logout</a>
+          </li>
+          <li class="nav-item fixed-signup">
+            <a class="nav-link" href="user/register" style="padding: 5px 10px; font-size: 13px;">SIGN UP</a>
+          </li>
+        </ng-template>
+        <li class="nav-item"><button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"    [routerLink]="['/checkout']"   class="btn btn-outline-secondary">
+          <i style="color: white !important;" class="fa fa-shopping-basket mr-2"></i>
+          <span class="badge badge-danger"> {{ wishlistCount }}</span>
+        </button>
+      </ul>
+    </div>
+
+    <ng-template #inconn>
+      <div class="navbar-collapse collapse" id="navbar_global"  >
+
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+              <i class="fa fa-plug" aria-hidden="true"></i>
+              <span class="nav-link-inner--text text-black" [routerLink]="['/user/logout']">logout </span>
+            </a>
+          </li>
+        </ul>
+
+
+      </div>
+    </ng-template>
+  </div>
+</nav>
+<!--/.Navbar-->

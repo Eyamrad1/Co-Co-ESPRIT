@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="content-wrapper">
+    <div *ngIf="bookings" class="bookings-table">
+      <h2>Bookings</h2>
+      <style>
+        h2 {
+          color: #EB1616;
+          text-align: center;
+        }
+        /* Add style for button */
+        button.delete-button {
+          background-color: #343a40; /* Change to the desired color */
+          color:#6C7293; /* Text color */
+          border: none; /* Remove border */
+          padding: 5px 10px; /* Adjust padding */
+          border-radius: 5px; /* Optional: Add border radius */
+          cursor: pointer; /* Change cursor on hover */
+        }
+        /* Style for button hover effect */
+        button.delete-button:hover {
+          background-color: #EB1616; /* Change to a darker shade for hover effect */
+        }
+        /* Add spacing between rows */
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        tr {
+          /* Remove border between rows */
+        }
+        td, th {
+          padding: 8px; /* Adjust padding for cells */
+          text-align: left; /* Align text in cells */
+        }
+      </style>
+
+      <table>
+        <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>reserved seats</th>
+          <!-- Add other necessary fields -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let booking of bookings| paginate: { itemsPerPage: 5, currentPage: p}">
+          <td>{{booking.bookingID}}</td>
+          <td>{{booking.nb}}</td>
+
+          <!-- Add class to button and adjust click event -->
+          <td><button class="delete-button" (click)="confirmDelete(booking.bookingID)">Delete carpooling booking</button></td>
+          <!-- Add other necessary fields -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

@@ -1,0 +1,358 @@
+ 
+.card {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 50px #ccc;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.card-header {
+  background-color: #ffffff;
+  color: #000000;
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+  padding: 20px;
+  /* border-bottom: 2px solid #0056b3; */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: calc(100% - 16px); /* Adjusted for padding */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.button-container {
+  display: flex;
+  justify-content: center; /* Aligns items horizontally at the center */
+  align-items: center; /* Aligns items vertically at the center */
+  margin-top: 20px; /* Adjust margin as needed */
+}
+/* You can add more specific styling for the form inputs if needed */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0
+}
+
+.no-gutters>.col,.no-gutters>[class*=col-] {
+  padding-right: 0;
+  padding-left: 0
+}
+
+.col,.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12,.col-auto,.col-lg,.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-auto,.col-md,.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12,.col-md-auto,.col-sm,.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-auto,.col-xl,.col-xl-1,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-auto {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%
+}
+
+.row-cols-1>* {
+  flex: 0 0 100%;
+  max-width: 100%
+}
+
+.row-cols-2>* {
+  flex: 0 0 50%;
+  max-width: 50%
+}
+
+.row-cols-3>* {
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%
+}
+
+.row-cols-4>* {
+  flex: 0 0 25%;
+  max-width: 25%
+}
+
+.row-cols-5>* {
+  flex: 0 0 20%;
+  max-width: 20%
+}
+
+.row-cols-6>* {
+  flex: 0 0 16.6666666667%;
+  max-width: 16.6666666667%
+}
+
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%
+}
+
+.col-1 {
+  flex: 0 0 8.33333333%;
+  max-width: 8.33333333%
+}
+
+.col-2 {
+  flex: 0 0 16.66666667%;
+  max-width: 16.66666667%
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%
+}
+
+.col-4 {
+  flex: 0 0 33.33333333%;
+  max-width: 33.33333333%
+}
+
+.col-5 {
+  flex: 0 0 41.66666667%;
+  max-width: 41.66666667%
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%
+}
+
+.col-7 {
+  flex: 0 0 58.33333333%;
+  max-width: 58.33333333%
+}
+
+.col-8 {
+  flex: 0 0 66.66666667%;
+  max-width: 66.66666667%
+}
+
+.col-9 {
+  flex: 0 0 75%;
+  max-width: 75%
+}
+
+.col-10 {
+  flex: 0 0 83.33333333%;
+  max-width: 83.33333333%
+}
+
+.col-11 {
+  flex: 0 0 91.66666667%;
+  max-width: 91.66666667%
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%
+}
+
+.order-first {
+  order: -1
+}
+
+.order-last {
+  order: 13
+}
+
+.order-0 {
+  order: 0
+}
+
+.order-1 {
+  order: 1
+}
+
+.order-2 {
+  order: 2
+}
+
+.order-3 {
+  order: 3
+}
+
+.order-4 {
+  order: 4
+}
+
+.order-5 {
+  order: 5
+}
+
+.order-6 {
+  order: 6
+}
+
+.order-7 {
+  order: 7
+}
+
+.order-8 {
+  order: 8
+}
+
+.order-9 {
+  order: 9
+}
+
+.order-10 {
+  order: 10
+}
+
+.order-11 {
+  order: 11
+}
+
+.order-12 {
+  order: 12
+}
+
+.offset-1 {
+  margin-left: 8.33333333%
+}
+
+.offset-2 {
+  margin-left: 16.66666667%
+}
+
+.offset-3 {
+  margin-left: 25%
+}
+
+.offset-4 {
+  margin-left: 33.33333333%
+}
+
+.offset-5 {
+  margin-left: 41.66666667%
+}
+
+.offset-6 {
+  margin-left: 50%
+}
+
+.offset-7 {
+  margin-left: 58.33333333%
+}
+
+.offset-8 {
+  margin-left: 66.66666667%
+}
+
+.offset-9 {
+  margin-left: 75%
+}
+
+.offset-10 {
+  margin-left: 83.33333333%
+}
+
+.offset-11 {
+  margin-left: 91.66666667%
+}
+.justify-content-between {
+  justify-content: space-between!important
+}
+.d-flex {
+  display: flex!important
+}
+.w-100 {
+  width: 100%!important
+}
+input[type=file] {
+  width: 350px;
+  max-width: 100%;
+  color: #222245;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #222245;
+}
+
+/* input[type=file]:focus {
+  outline: 2px dashed #222245;
+  outline-offset: 2px;
+} */
+
+input[type=file]::file-selector-button {
+  margin-right: 8px;
+  border: none;
+  background: #222245;
+  padding: 8px 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #4747b8;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1e1e3f;
+    color: #fff;
+  }
+
+  input[type=file] {
+    color: #fff;
+    border: 1px solid #35356e;
+    background-color: #1e1e3f;
+  }
+
+  /* input[type=file]:focus {
+    outline: 2px dashed #7c7cc0;
+    outline-offset: 2px;
+  } */
+
+  input[type=file]::file-selector-button {
+    background: #35356e;
+    color: #fff;
+  }
+}
+.justify-content-center {
+  justify-content: center!important
+}

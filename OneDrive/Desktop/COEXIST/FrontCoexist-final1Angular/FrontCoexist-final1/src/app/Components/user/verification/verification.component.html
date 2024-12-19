@@ -1,0 +1,72 @@
+<main class="">
+  <section class="section section-xs section-shaped pb-50">
+    <div class="shape shape-style-1 shape-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container py-lg-md d-flex">
+      <div class="col px-0">
+        <script href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons"></script>
+        <section class=" mt--50 mb--50" >
+          <div class="container marg  ">
+            <div class="row row-grid align-items-left">
+              <div class="col-md-6">
+                <div class="bg-gradient-white shadow border-0 p-2 g-col-6">
+                  <div class="d-flex justify-content-center">
+                    <div class="icon-block">
+                      <img src="https://img.icons8.com/ios/50/2E9AFE/lock-2.png" />
+                    </div>
+                  </div>
+                  <div class="text-center my-1">
+                    <h2 class="fw-bold">COCONSULT verification Terms</h2>
+                    <div class="text-muted">Enter 6-digit code from your email verification</div>
+                  </div>
+
+                  <div class="ng-otp-input-container "> <!-- Apply ng-otp-input-container class -->
+                    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="configOptions"></ng-otp-input>
+                  </div>
+
+                  <div class="text-center mt-4 "> <!-- Apply text-center and mt-2 class for button alignment -->
+                    <button class="btn digit-otp-button btn-lg w-100" [ngClass]="btnStatus" (click)="onButtonClick()">{{ this.inputDigitLeft }}</button>
+                  </div>
+                </div>
+                <p class="lead text-black shadow-text  ">Y à t il un probleme ? renvoyez un nouveau code à votre mail </p>
+
+                <button  class="btn bg-white text-black "> resend code ? </button>
+
+              </div>
+
+              <div class="col-md-6 ">
+                <div class="pl-md-5">
+
+                  <h4 class="display-3 font-weight-bold text-black shadow-text  ">Bienvenue dans notre platforme</h4>
+                  <p class="lead text-black shadow-text  ">il vous manque une pas pour devenir l'un de nous!</p>
+
+                  <div >
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </section>
+
+
+
+  <!------ footer---------->
+  <app-footer></app-footer>
+</main>

@@ -1,0 +1,58 @@
+<!-- display-event.component.html -->
+<div class="event-container">
+  <!-- Add event button -->
+  <div>
+    <button mat-raised-button color="primary" (click)="navigateToAddEvent()">
+      <mat-icon>add</mat-icon>Add Event
+    </button>
+  </div>
+  <button mat-raised-button color="accent" style="margin-right: 8px;" (click)="navigateToGraph()">
+    <mat-icon>bar_chart</mat-icon>statistic
+  </button>
+
+
+  <!-- Event table -->
+  <table class="event-table">
+    <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Event Description</th>
+      <th>Event Date</th>
+      <th>Event Location</th>
+      <th>Total Places</th>
+      <th>Remaining Places</th>
+      <th>pricePerTicket</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate over events -->
+    <tr *ngFor="let event of events">
+      <td>{{ event.eventName }}</td>
+      <td>{{ event.eventDescription }}</td>
+      <td>{{ event.eventDate | date: 'mediumDate' }}</td>
+      <td>{{ event.eventLocation }}</td>
+      <td>{{ event.totalPlaces}}</td>
+      <td>{{ event.remainingPlaces}}</td>
+      <td>{{ event.pricePerTicket}}</td>
+      <td>
+        <!-- Display the uploaded image -->
+        <img [src]="event.imageUrl" alt="Event Image">
+      </td>
+      <td>
+        <!-- Delete and update buttons -->
+        <button mat-raised-button color="warn" (click)="confirmDelete(event)">
+          <mat-icon>delete</mat-icon>Delete
+        </button>
+        <button mat-raised-button color="accent" style="margin-right: 8px;" (click)="navigateToUpdateEvent(event)">
+          <mat-icon>edit</mat-icon>Update
+        </button>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+

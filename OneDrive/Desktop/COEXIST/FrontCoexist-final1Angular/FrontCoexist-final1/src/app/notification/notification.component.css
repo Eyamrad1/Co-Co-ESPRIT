@@ -1,0 +1,125 @@
+.carpool-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.carpool-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.carpool-details {
+  margin-bottom: 20px;
+}
+
+.booking-section input[type="number"] {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.booking-section button {
+  padding: 10px 20px;
+  background-color: #ec4848;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.booking-section button:hover {
+  background-color: red;
+}
+
+.carpool-map {
+  height: 200px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.carpool-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.carpool-map {
+  height: 200px;
+  width: calc(50% - 10px); /* Adjust width to account for margin */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 10px; /* Add margin to separate from details section */
+}
+
+/* Add this to ensure the details section takes up the remaining space */
+.carpool-details, .booking-section {
+  width: calc(50% - 10px);
+  margin-right: 10px; /* Add margin to separate from map section */
+}
+.carpool-container {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.carpool-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.carpool-details {
+  margin-bottom: 20px;
+}
+
+.booking-section input[type="number"] {
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.booking-section button {
+  padding: 10px 20px;
+  background-color: #ec4848;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.booking-section button:hover {
+  background-color: red;
+}
+
+.carpool-map {
+  height: 500px;
+  width: 500px;
+
+  border-radius: 4px;
+  float: right; /* Move the map to the right */
+}
+.carpool-container {
+  display: flex;
+}
+
+.carpool-details {
+  flex: 1;
+  padding-right: 20px; /* Add some spacing between the sections */
+}
+
+.carpool-map {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

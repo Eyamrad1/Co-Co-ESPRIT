@@ -1,0 +1,62 @@
+<h2>New Carpooling</h2>
+<style>
+  h2 {
+    color: #dc3545;
+    text-align: center;
+  }
+  #map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div id="map"></div>
+
+<form [formGroup]="carpoolingForm" (ngSubmit)="addCarpooling()" class="form-container">
+  <label for="availableSeats">Available Seats:</label>
+  <input id="availableSeats" type="number" formControlName="availableSeats" placeholder="Enter availableSeats(1..5)">
+  <span *ngIf="carpoolingForm.get('availableSeats')?.invalid && carpoolingForm.get('availableSeats')?.touched">Invalid</span>
+
+  <label for="costPerSeat">Cost Per Seat:</label>
+  <input id="costPerSeat" type="number" formControlName="costPerSeat" placeholder="Enter cost per seat in dinars">
+  <span *ngIf="carpoolingForm.get('costPerSeat')?.invalid && carpoolingForm.get('costPerSeat')?.touched">Invalid</span>
+
+  <label for="carpoolingType">Carpooling Type:</label>
+  <select id="carpoolingType" formControlName="carpoolingType">
+    <option value="DAILY">daily</option>
+    <option value="SPECIFIC">SPECIFIC</option>
+  </select>
+  <span *ngIf="carpoolingForm.get('carpoolingType')?.invalid && carpoolingForm.get('carpoolingType')?.touched">Invalid</span>
+
+  <div *ngIf="carpoolingForm.get('carpoolingType')?.value === 'DAILY'">
+    <label for="day">Day:</label>
+    <select id="day" formControlName="day">
+      <option value="MONDAY">Monday</option>
+      <option value="TUESDAY">Tuesday</option>
+      <option value="WEDNESDAY">Wednesday</option>
+      <option value="THURSDAY">Thursday</option>
+      <option value="FRIDAY">Friday</option>
+    </select>
+
+    <label for="time">Time:</label>
+    <input id="time" type="time" formControlName="time" placeholder="Enter longitudeDeparture">
+  </div>
+
+  <div *ngIf="carpoolingForm.get('carpoolingType')?.value === 'SPECIFIC'">
+    <label for="departureTime">Departure Time:</label>
+    <input id="departureTime" type="datetime-local" formControlName="departureTime" placeholder="Enter longitudeDeparture">
+  </div>
+
+  <label for="registrationNumber">Registration Number:</label>
+  <input id="registrationNumber" type="text" formControlName="registrationNumber" placeholder="Enter registrationNumber">
+  <span *ngIf="carpoolingForm.get('registrationNumber')?.invalid && carpoolingForm.get('registrationNumber')?.touched">Invalid</span>
+
+  <!-- Additional form fields for longitude and latitude -->
+
+  <button type="submit">Add Carpooling</button>
+  <a href="http://localhost:4200/home" style="color: red; font-size: larger;">back</a>
+
+
+</form>
+

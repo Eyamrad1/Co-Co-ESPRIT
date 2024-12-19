@@ -1,0 +1,128 @@
+<app-header-front></app-header-front>
+<h2>the list Carpools</h2>
+<!-- Add a dropdown menu for selecting carpooling type -->
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <label for="carpoolingType">Filter by Carpooling Type:</label>
+    <select id="carpoolingType" [(ngModel)]="selectedCarpoolingType" (change)="filterCarpoolsByType()" >
+      <option value="">All</option>
+      <option *ngFor="let type of carpoolingTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+  <div class="filter-container">
+    <label for="departurePlace"></label>
+    <input type="text" id="departurePlace" [(ngModel)]="departureLocationFilter" (input)="filterCarpoolsByDeparture()" placeholder="Search by Departure Place:">
+  </div>
+
+  <div class="filter-container">
+    <label for="day">Select Day:</label>
+    <select id="day" [(ngModel)]="selectedDay" (change)="filterByDay()" >
+      <option value="">All</option>
+      <option value="MONDAY">Monday</option>
+      <option value="TUESDAY">Tuesday</option>
+      <option value="WEDNESDAY">Wednesday</option>
+      <option value="THURSDAY">Thursday</option>
+      <option value="FRIDAY">Friday</option>
+      <!-- Add other days as needed -->
+    </select>
+  </div>
+</div>
+
+
+
+
+
+<style>
+
+  h2 {
+    color: #dc3545;
+    text-align: center;
+  }
+  .carpool-map {
+    height: 500px; /* Adjust the height as needed */
+    width: 1120px;
+    margin-bottom: 20px;
+  }
+  .filter-container {
+    margin-bottom: 20px;
+  }
+  .filter-container label {
+    margin-right: 10px;
+  }
+  .carpool-container {
+    display: flex;
+    flex-direction: column; /* This will stack the carpoolings vertically */
+    align-items: center; /* This will center the carpoolings horizontally */
+
+  }
+  .carpool-card {
+    width: 80%; /* Adjust this to change the width of the carpoolings */
+    margin-bottom: 20px; /* This will add some space between the carpoolings */
+    flex: 1 0 auto; /* Allow each card to grow and shrink as needed */
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  button {
+    margin: 0 10px 10px 0; /* This adds a 10px space to the right and bottom of each button */
+    border-radius: 12px; /* This makes the buttons rounder */
+    background-color: #dc3545;
+    color:white;
+
+  }
+</style>
+
+<div class="carpool-container">
+  <div class="carpool-card" *ngFor="let carpool of carpoolings">
+    <ng-container *ngIf="carpool.departureTime !== null">
+      <p><strong>Departure Time:</strong> {{ carpool.departureTime }}</p>
+    </ng-container>
+    <p><strong>Available Seats:</strong>
+      <ng-container *ngIf="carpool.availableSeats === 0; else seatsAvailable">
+        No seats left
+      </ng-container>
+      <ng-template #seatsAvailable>
+        {{ carpool.availableSeats }}
+      </ng-template>
+    </p>
+    <p *ngIf="carpool.day !== null"><strong>Day:</strong> {{ carpool.day }}</p>
+    <p *ngIf="carpool.time !== null"><strong>Time:</strong> {{ carpool.time }}</p>
+    <p><strong>Carpooling Type:</strong> {{ carpool.carpoolingType }}</p>
+    <p><strong>Registration Number:</strong> {{ carpool.registrationNumber }}</p>
+    <p><strong>price per seat:</strong> {{ carpool.costPerSeat | currency:'dt':'symbol':'1.2-2' }}</p>
+    <input type="number" [(ngModel)]="newBooking.nb" name="nb" placeholder="Enter nb">
+
+    <button (click)="addBooking(carpool.carpoolingID)">Book This Carpool</button>
+    <button (click)="confirmDelete(carpool.carpoolingID)">Delete Carpooling</button>
+    <button class="update-button" routerLink="/carpooling/{{carpool.carpoolingID}}">Update</button>
+    <!-- Map for Departure and Destination Locations -->
+    <div id="map_{{ carpool.carpoolingID }}" class="carpool-map"></div>
+  </div>
+</div>
+
+<app-footer-front></app-footer-front>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300,300italic,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+<!-- Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/materialize.css" rel="stylesheet">
+
+<!-- Magnific-popup css -->
+<link href="/assets/frontOffice/css/magnific-popup.css" rel="stylesheet">
+
+<!-- Bootstrap core CSS -->
+<link href="/assets/frontOffice/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+<!--<link href="css/progressbar.css" rel="stylesheet">-->
+
+<!-- Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/mdb.min.css" rel="stylesheet">
+<link rel="preload" href="assets/frontOffice/font/roboto/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+
+
+<!-- Your custom styles (optional) -->
+<link href="/assets/frontOffice/css/style.css" rel="stylesheet">
+<link href="/assets/frontOffice/css/responsive.css" rel="stylesheet">

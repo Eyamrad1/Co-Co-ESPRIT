@@ -1,0 +1,29 @@
+<div class="grid-container">
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchCriteria" (input)="filterFeedback()" placeholder="Search Feedback" class="search-input">
+    <input type="number" [(ngModel)]="minRating" (input)="filterFeedback()" placeholder="Minimum Rating" class="rating-input">
+  </div>
+
+  <div class="grid-item" *ngFor="let feedback of filteredFeedbackList | paginate: { itemsPerPage: 5, currentPage: p }">
+    <div class="feedback-card">
+      <p><strong>Feedback:</strong> {{ feedback.feed_Back }}</p>
+      <p><strong>Rating:</strong>
+        <span *ngIf="feedback.rate >= 1">★</span>
+        <span *ngIf="feedback.rate >= 2">★</span>
+        <span *ngIf="feedback.rate >= 3">★</span>
+        <span *ngIf="feedback.rate >= 4">★</span>
+        <span *ngIf="feedback.rate >= 5">★</span>
+      </p>
+
+      <p><strong>username:</strong> {{ feedback.booking.user.username }}</p>
+      <button class="delete-button" (click)="deleteFeedback(feedback.feedBackId)">Delete</button>
+
+      <!-- Include other properties of the booking as needed -->
+      <!-- For example: -->
+      <!-- <p><strong>Departure Time:</strong> {{ feedback.booking.carpooling.departureTime }}</p> -->
+      <!-- <p><strong>User:</strong> {{ feedback.booking.user.username }}</p> -->
+
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

@@ -1,0 +1,66 @@
+.grid-container {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-item {
+  background-color: black;
+  color: black; /* Text color */
+}
+
+.feedback-card {
+  background-color: #6C7293;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.feedback-card p {
+  margin: 0;
+  color: black; /* Text color */
+}
+
+.feedback-card p strong {
+  font-weight: bold;
+}
+
+.feedback-card p span {
+  color: gold;
+}
+.delete-button {
+  background-color: #191C24; /* Red background color */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  padding: 8px 16px; /* Add padding */
+  border-radius: 4px; /* Add border radius */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.delete-button:hover {
+  background-color: #191C56; /* Darker red background color on hover */
+}
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  background-color: #6C7293; /* Background color */
+  color: white; /* Text color */
+  margin-left: 10px; /* Adjust margin to move it a little to the right */
+}
+
+.search-input::placeholder {
+  color: #ffffff80; /* Adjust placeholder color with transparency */
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}

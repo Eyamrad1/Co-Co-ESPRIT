@@ -1,0 +1,36 @@
+.text-white {
+  color: #ffffff !important; /* Apply white color */
+}
+.filter-wrapper {
+  display: flex; /* Use flexbox layout */
+  justify-content: space-between; /* Align items with space between them */
+  margin-bottom: 100px;
+}
+
+.filter-container {
+  flex: 1; /* Each filter container takes up equal space */
+  margin-right: 20px; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+}
+.filter-container label {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+.filter-wrapper {
+  margin-top: 50px; /* Adjust margin top as needed */
+}
+.search-input {
+  width: 250px; /* Adjust the width as needed */
+}
+.filter-container input[type="text"],
+.filter-container select {
+  background-color: #6C7293;
+  color: black; /* Optionally set text color to contrast */
+}
+.search-input::placeholder {
+  color: black;
+}
+.filter-container label {
+  margin-right: 30px; /* Adjust the margin as needed */
+}
+

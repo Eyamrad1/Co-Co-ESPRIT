@@ -1,0 +1,73 @@
+.filter-wrapper {
+  display: flex; /* Use flexbox layout */
+  justify-content: space-between; /* Align items with space between them */
+  margin-bottom: 100px;
+}
+
+.filter-container {
+  flex: 1; /* Each filter container takes up equal space */
+  margin-right: 20px; /* Adjust as needed */
+}
+.filter-wrapper {
+  margin-top: 50px; /* Adjust margin top as needed */
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#map {
+  height: 400px; /* Adjust height as needed */
+  width: 100%;   /* Adjust width as needed */
+}
+.filter-container {
+  display: block; /* Ensure the container is displayed */
+  margin-bottom: 20px;
+  /* Add any other necessary styles */
+  flex: 1; /* Distribute equal space among filter containers */
+  margin-right: 10px;
+}
+
+/* Ensure the label and select elements are visible */
+.filter-container label,
+.filter-container select {
+  display: inline-block;
+}
+
+/* Paste the provided CSS styles here */
+h2 {
+  font-size: 2.222rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: #dc3545;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-container label {
+  margin-right: 10px;
+}
+
+.carpool-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carpool-card {
+  width: 80%;
+  margin-bottom: 20px;
+  flex: 1 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+button {
+  margin: 0 10px 10px 0;
+  border-radius: 12px;
+}

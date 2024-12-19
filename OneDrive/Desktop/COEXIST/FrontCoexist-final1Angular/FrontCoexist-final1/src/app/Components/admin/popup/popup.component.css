@@ -1,0 +1,78 @@
+
+.mat-form-field{
+  width: 100%;
+}
+h2 {
+  text-align: center;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+
+/* Adjusted chart size */
+.chart-container {
+  width: 80%; /* Adjust the width as needed */
+  margin-top: 20px;
+}
+
+/* CSS for centering the title */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+h1 {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
+}
+
+canvas {
+  height: 100%;
+  width: 100%;
+}
+
+
+.buttons {
+  min-width: 310px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0;
+}
+
+.buttons button {
+  cursor: pointer;
+  border: 1px solid silver;
+  border-right-width: 0;
+  background-color: #f8f8f8;
+  font-size: 1rem;
+  padding: 0.5rem;
+  transition-duration: 0.3s;
+  margin: 0;
+}
+
+.buttons button:first-child {
+  border-top-left-radius: 0.3em;
+  border-bottom-left-radius: 0.3em;
+}
+
+.buttons button:last-child {
+  border-top-right-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  border-right-width: 1px;
+}
+
+.buttons button:hover {
+  color: white;
+  background-color: rgb(158 159 163);
+  outline: none;
+}
+
+.buttons button.active {
+  background-color: #0051b4;
+  color: white;
+}

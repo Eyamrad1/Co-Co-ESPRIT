@@ -1,0 +1,92 @@
+<br><br><br><br>
+<div class="container p-3">
+  <h2 class="text-center">MY BOOKINGS</h2>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Address</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let collocationBooking of getPaginatedCollocationBookings()">
+      <td>{{ collocationBooking.annoncementCollocation.houseType }}</td>
+      <td><div style=" text-wrap: balance; " >{{ collocationBooking.annoncementCollocation.address }}</div></td>
+      <td>{{ collocationBooking.startDate | date:'short' }}</td>
+      <td>{{ collocationBooking.endDate | date:'short' }}</td>
+      <td>{{ collocationBooking.annoncementCollocation.pricePerPerson * collocationBooking.annoncementCollocation.numPerso }}</td>
+
+      <td>
+        <div class="d-flex justify-content-between">
+          <div class="">
+            <button class="btn btn-info" (click)="show_Modal(collocationBooking.idCollocationBooking)">FEEDBACK</button>
+          </div>
+          <div>
+            <button class="btn btn-danger" (click)="handleDeleteCollocationBooking(collocationBooking)">DELETE</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="allCollocationBookings.length === 0">
+    <p>No roommate announcements are available at the moment.</p>
+  </div>
+  <!-- Pagination controls -->
+
+  <div class="pagination-container">
+    <button class="pagination-button" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span class="pagination-text">Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="pagination-button" (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+  <!-- Modal -->
+  <!-- Button trigger modal -->
+  <div class="modal" *ngIf="showModal === true"style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">How was your experience with us ?</h5>
+        </div>
+        <form [formGroup]="feedbackForm" (submit)="submitFeedback()">
+          <div class="modal-body">
+
+
+            <div class="d-flex align-items-center">
+              <div for="rateInput">Rate:</div>
+              <div  class="product-review-stars" style="
+            margin: 24px 0px 3px 12px;
+        ">
+
+                <div  *ngFor="let star of stars"
+                      (mouseenter)="toggleHover(star)"
+                      (mouseleave)="toggleHover(star)"
+                      [ngClass]="getClassObject(star)"
+                      (click)="selectStar(star.id)">
+                  <mat-icon>{{star.icon}}</mat-icon>
+                </div>
+              </div>
+
+            </div>
+            <div>
+              <label for="feedBackInput">Your Feedback:</label>
+              <textarea id="feedBackInput" formControlName="feed_Back" type="text" rows="5" cols="33" placeholder="Tapez vos commentaires ici..."></textarea>
+
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+            <button class="btn btn-success" (click)="submitFeedback()">Submit Feedback</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <button (click)="redirectToCreateCollocationBooking()">Créer une colocation</button> -->
+</div>

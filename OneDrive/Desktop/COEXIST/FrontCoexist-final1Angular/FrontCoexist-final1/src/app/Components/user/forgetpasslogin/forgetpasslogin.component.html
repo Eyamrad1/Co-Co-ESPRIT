@@ -1,0 +1,85 @@
+
+<section class="section section-shaped section-lg">
+  <div class="shape shape-style-1 bg-gradient-default">
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="fg" (ngSubmit)="submitfg()">
+
+              <h5 class="card-title">COEXIST Verification Terms</h5>
+              <input type="text" class="form-control" placeholder="email" id="email" formControlName="email">
+
+              <button class="btn btn-primary mt-2">Vérifier</button>
+              <a href="#" class="card-link" (click)="resendcode($event)">Renvoyer le code de vérification</a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6"  *ngIf="showResetPasswordCard">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="fgreset" (ngSubmit)="submitfgreset()">
+
+              <h5 class="card-title">Entrer votre nouveaux mot de pass</h5>
+              <div class="form-group">
+                <label for="code">Enter the code from your mail</label>
+                <input type="text" id="code" class="form-control mt-2" placeholder="Code de vérification" formControlName="code">
+              </div>
+
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" class="form-control" id="newPassword" formControlName="newPassword">
+                <div *ngIf="fgreset.get('newPassword').errors">
+                  <!-- Display validation error messages for newPassword -->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
+                <div *ngIf="fgreset.get('confirmPassword').errors">
+                  <!-- Display validation error messages for confirmPassword -->
+                </div>
+              </div>
+              <div *ngIf="fgreset.errors">
+                <p class="text-danger">Passwords do not match</p>
+              </div>
+              <button class="btn btn-primary mt-2">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section>
+<!--<div class="container" [formGroup]="forgetForm">
+  <h2>Forget password</h2>
+  <br>
+
+<br>
+  <br>
+  <br>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email">
+  </div>
+
+
+  <div>
+    <button (click)="verifier()">Envoyer</button>
+    <a class="a-auth" routerLink="/user/forgetpassword">Resend code de verfication</a>
+
+  </div>
+
+
+  <br>
+  <br>
+</div>
+-->

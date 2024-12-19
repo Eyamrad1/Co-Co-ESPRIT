@@ -1,0 +1,13 @@
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let evaluation of evaluations">
+    <div class="feedback-card">
+      <p><strong>Event Position:</strong> {{ evaluation.eventPosition }}</p>
+      <p><strong>Comment:</strong> {{ evaluation.comment }}</p>
+      <!-- Include other properties of the evaluation as needed -->
+      <!-- For example: -->
+      <!-- <p><strong>Event Date:</strong> {{ evaluation.eventDate }}</p> -->
+      <p><strong>User:</strong> {{ evaluation.user.username }}</p>
+     <button class="delete-button" (click)="deleteEvaluation(evaluation.IdEvaluation)">Delete</button>
+    </div>
+  </div>
+</div>

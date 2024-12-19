@@ -1,0 +1,86 @@
+
+<link href="/app/favicon.ico" rel="icon">
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Icon Font Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link href="/assets/backOffice/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="/assets/backOffice/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="/assets/backOffice/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="/assets/backOffice/css/style.css" rel="stylesheet">
+<div class="add-event-container">
+  <h2>Add Product</h2>
+
+  <form (submit)="addProduct()" #productForm="ngForm">
+
+    <label for="productName">Product Name</label>
+    <input type="text" class="form-control" id="productName" [(ngModel)]="product.productName" name="productName" required placeholder="Enter Product Name">
+    <div *ngIf="productForm.controls['productName'].invalid && (productForm.controls['productName'].dirty || productForm.controls['productName'].touched)" class="invalid-feedback">
+      Please enter an event name.
+    </div>
+
+
+
+    <label for="description">Product Description</label>
+    <textarea class="form-control" id="description" [(ngModel)]="product.description" name="description" required placeholder="Enter Product Description"></textarea>
+    <div *ngIf="productForm.controls['description'].invalid && (productForm.controls['description'].dirty || productForm.controls['description'].touched)" class="invalid-feedback">
+      Please enter an event description.
+    </div>
+
+
+
+    <label for="Date">Product Date</label>
+    <input type="date" class="form-control" id="Date" [(ngModel)]="product.Date" name="Date" required>
+    <div *ngIf="productForm.controls['Date'].invalid && (productForm.controls['Date'].dirty || productForm.controls['Date'].touched)" class="invalid-feedback">
+      Please enter a valid event date.
+    </div>
+
+    <label for="price">Price</label>
+    <input type="number" class="form-control" id="price" [(ngModel)]="product.price" name="price" required placeholder="Enter Price">
+    <div *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)" class="invalid-feedback">
+      Please enter a valid price.
+    </div>
+    <label for="stock">Stock</label>
+    <input type="number" class="form-control" id="stock" [(ngModel)]="product.stock" name="stock" required placeholder="Enter Stock">
+    <div *ngIf="productForm.controls['stock'].invalid && (productForm.controls['stock'].dirty || productForm.controls['stock'].touched)" class="invalid-feedback">
+      Please enter a valid stock.
+    </div>
+
+
+    <label for="type">Type of Product</label>
+    <select class="form-control" id="type" [(ngModel)]="product.type" name="type" required>
+      <option value="Memble">Memble</option>
+      <option value="Accessoire">Accessoire</option>
+      <option value="Autres">Autres</option>
+    </select>
+    <div *ngIf="productForm.controls['type'].invalid && (productForm.controls['type'].dirty || productForm.controls['type'].touched)" class="invalid-feedback">
+      Please select a type of product.
+    </div>
+
+
+
+
+
+    <label for="img">Image</label>
+    <input type="file" class="form-control-file" id="img" (change)="onFileSelected($event)" name="img" accept="image/*">
+    <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" alt="Image Preview" width="250">
+
+
+    <button mat-raised-button color="accent" type="submit" class="btn btn-primary" [disabled]="!productForm.valid">
+      Add Product
+    </button>
+  </form>
+</div>

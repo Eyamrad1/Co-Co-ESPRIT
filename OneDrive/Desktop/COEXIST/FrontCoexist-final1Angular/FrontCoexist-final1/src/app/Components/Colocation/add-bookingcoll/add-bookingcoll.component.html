@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card col-md-6 offset-3 mt-2">
+    <div class="card-header">BOOK THIS ANNOUNCEMENT</div>
+    <div class="card-body">
+      <form [formGroup]="newCollocationBookingFormGroup" (ngSubmit)="handleSaveCollocationBooking()">
+        <div class="mb-3">
+          <label class="form-label">Start Date:</label>
+          <input type="date" formControlName="startDate" class="form-control">
+          <span class="text-danger"
+                *ngIf="newCollocationBookingFormGroup.controls['startDate'].touched
+                && newCollocationBookingFormGroup.controls['startDate'].errors
+                && newCollocationBookingFormGroup.controls['startDate'].errors!['required']">
+            La date de début est requise
+          </span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">End Date:</label>
+          <input type="date" formControlName="endDate" class="form-control">
+          <span class="text-danger"
+                *ngIf="newCollocationBookingFormGroup.controls['endDate'].touched
+                && newCollocationBookingFormGroup.controls['endDate'].errors
+                && newCollocationBookingFormGroup.controls['endDate'].errors!['required']">
+            La date de fin est requise
+          </span>
+        </div>
+        <!-- Vous pouvez ajouter d'autres champs au besoin en fonction de votre modèle de classe -->
+        <button [disabled]="!newCollocationBookingFormGroup.valid" class="btn btn-info">Book it !</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+
+<div class="search-container">
+  <!-- Search input field -->
+  <input type="text" placeholder="Search users..." [(ngModel)]="keyword" class="search-input" (input)="search()">
+  <mat-icon>search</mat-icon>
+</div>
+<div class="users-container"  >
+
+  <h2>All Users</h2>
+
+  <table class="table-user">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>phone</th>
+      <th>roleName</th>
+      <th>blocked</th>
+      <th>active</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users | paginate: { itemsPerPage: 3, currentPage: p }">
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.roleName}}</td>
+      <td>{{user.blocked}}</td>
+      <td>{{user.valid}}</td>
+      <td>
+        <button class="delete-button" (click)="deleteUser(user.userId)">Delete</button>
+        <button *ngIf="user.valid" (click)="bloqueUser(user)" type="button" class="btn btn-danger">Bloque</button>
+        <button *ngIf="!user.valid" (click)="verifier(user)" type="button" class="btn btn-primary" >Active</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+  <pagination-controls class="custom-pagination" (pageChange)="p = $event"></pagination-controls>
+
+</div>
+
+
+
+
+

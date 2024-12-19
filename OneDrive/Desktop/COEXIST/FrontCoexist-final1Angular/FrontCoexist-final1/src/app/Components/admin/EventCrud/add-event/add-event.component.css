@@ -1,0 +1,67 @@
+/* add-event.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+
+div {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+h2 {
+  text-align: center;
+  color: #ff0000;
+}
+button mat-icon {
+  margin-right: 5px; /* Adjust the margin as needed */
+}
+mat-icon {
+  font-family: 'Material Icons', sans-serif !important;
+  /* Ensure that the font-family is set to 'Material Icons' */
+  /* You can also specify other properties like font-size, color, etc. as needed */
+}
+form {
+  display: grid;
+  gap: 10px;
+}
+.event-container mat-raised-button {
+  background-color: #ff0000; /* Red */
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Additional styles specific to add-event component if needed */

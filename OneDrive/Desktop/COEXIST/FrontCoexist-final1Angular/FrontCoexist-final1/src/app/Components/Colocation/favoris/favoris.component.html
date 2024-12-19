@@ -1,0 +1,78 @@
+<br><br><br><br>
+<div class="container p-3">
+  <h2 class="text-center">my favorites Announcements</h2>
+  <div class="row ">
+    <ng-container
+      *ngFor="let annonce of favoris.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+      <ng-container *ngIf="!annonce.archive  ">
+
+        <div class="col-md-4 col-12 col">
+          <div class="estate-card">
+            <ngx-slick-carousel class="carousel w-auto h-auto" #slickModal="slick-carousel" [config]="slideConfig" style="border-radius: 20px; ">
+              <div ngxSlickItem *ngFor="let slide of annonce.images" class="slide">
+                <img [src]="'data:'+slide.type+';base64,' + slide.data " alt=""  width="300" height="230">
+              </div>
+            </ngx-slick-carousel>
+            <div class="estate-badges badges ">
+
+              <container-element [ngSwitch]="annonce.etat">
+                <span class="green" *ngSwitchCase="'AVAILABLE'">AVAILABLE</span>
+                <p class="red" *ngSwitchCase="'BOOKED'">BOOKED</p>
+                <p class="yellow" *ngSwitchCase="'IN_PROGRESS'">IN PROCESS</p>
+                <p class="green" *ngSwitchDefault>AVAILABLE</p>
+              </container-element>
+            </div>
+            <div class="estate-card-box-data"><!---->
+              <div class="row mStar">
+                <ng-container *ngIf=" annonce.averageRating  > 0">
+                  <div [ngClass]="[star.class]  " *ngFor="let star of stars.slice(0, annonce.averageRating)">
+                    <mat-icon class="mat-icon w-auto">{{star.icon}}</mat-icon>
+                  </div>
+                </ng-container>
+              </div>
+              <div class="estate-card-price">
+
+                <div class="estate-card-current-price">
+                  {{ annonce.pricePerPerson * annonce.numPerso }} DT
+                </div> <!---->
+                <div class="estate-card-user-buttons">
+                  <img src="assets/frontOffice/img/icons/rooms.svg" alt="masque" width="20" height="20">
+                  <span class="estate-card-subtitle"> {{ annonce.homeSize }} </span>
+
+                  <img src="assets/frontOffice/img/icons/profile.svg" alt="masque" width="20" height="20">
+                  <span class="estate-card-subtitle"> {{ annonce.numPerso }} </span>
+
+                  <a *ngIf="annonce.favori" (click)="removeFavoris(annonce)">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                      <path style="fill: rgb(223, 3, 3);" fill="currentColor"
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="estate-card-titles-container">
+                <div class="estate-card-titles">
+                  <h3 class="estate-card-title">
+                    {{annonce.address}}
+                  </h3>
+                  <h4 class="estate-card-subtitle">
+                    {{annonce.houseType}} - {{ annonce.equipmentType.replace("_", " ") }}
+                  </h4>
+                </div>
+              </div>
+              <div class="estate-card-data"><!----> <!---->
+                <div class="w-100">
+                  <div class="  d-flex  justify-content-between">
+                    <a class="btn btn-success  " [routerLink]="['/annColl/',annonce.annoncementCollocationId ]">BOOK IT !</a>
+                    <a class="btn btn-danger" (click)="removeFavoris(annonce)">DELETE IT !</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+  </div>
+</div>

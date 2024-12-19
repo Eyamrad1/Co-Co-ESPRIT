@@ -1,0 +1,48 @@
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300,300italic,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+<!-- Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/materialize.css" rel="stylesheet">
+
+<!-- Magnific-popup css -->
+<link href="/assets/frontOffice/css/magnific-popup.css" rel="stylesheet">
+
+<!-- Bootstrap core CSS -->
+<link href="/assets/frontOffice/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Material Design Bootstrap -->
+<!--<link href="css/progressbar.css" rel="stylesheet">-->
+
+<!-- Material Design Bootstrap -->
+<link href="/assets/frontOffice/css/mdb.min.css" rel="stylesheet">
+<link rel="preload" href="assets/frontOffice/font/roboto/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+
+
+<!-- Your custom styles (optional) -->
+<link href="/assets/frontOffice/css/style.css" rel="stylesheet">
+<link href="/assets/frontOffice/css/responsive.css" rel="stylesheet">
+
+
+<app-header-front></app-header-front>
+<div class="container">
+  <form [formGroup]="feedbackForm" (ngSubmit)="addFeedback()" class="feedback-form">
+    <div>
+      <label for="feed_Back">Feedback:</label>
+      <textarea id="feed_Back" formControlName="feed_Back" required [disabled]="submitted"></textarea>
+    </div>
+    <div>
+      <label for="rate">Rate:</label>
+      <div class="rating">
+        <span (click)="setRate(5)" [class.filled]="feedback.rate >= 5">☆</span>
+        <span (click)="setRate(4)" [class.filled]="feedback.rate >= 4">☆</span>
+        <span (click)="setRate(3)" [class.filled]="feedback.rate >= 3">☆</span>
+        <span (click)="setRate(2)" [class.filled]="feedback.rate >= 2">☆</span>
+        <span (click)="setRate(1)" [class.filled]="feedback.rate >= 1">☆</span>
+      </div>
+    </div>
+    <!-- Add more form controls for other properties if needed -->
+    <button type="submit" style="background: #ec4848" [disabled]="submitted">Submit Feedback</button>
+  </form>
+</div>
+<app-footer-front></app-footer-front>

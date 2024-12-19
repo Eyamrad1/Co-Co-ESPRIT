@@ -1,0 +1,132 @@
+.eventsss {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+.eventsss h2 {
+  text-align: center;
+  font-size: 24px;
+  color: red;
+  margin-top: 40px;
+}
+.search-container{
+  margin-top: 70px;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center items vertically */
+}
+.search-input {
+  flex: 1; /* Allow input to grow and take remaining space */
+  transition: all 0.3s ease;
+}
+.search-input:focus {
+  width: 200px; /* Adjust the width as needed */
+}
+
+mat-icon {
+  margin-left: 10px; /* Add space between input and icon */
+}
+
+
+
+
+
+.row {
+  display: flex; /* Use flexbox */
+  flex-wrap: nowrap; /* Prevent wrapping to next line */
+  overflow-x: auto; /* Add horizontal scroll if needed */
+  margin-top: 20px; /* Add margin to the top of the row */
+  margin-left: -10px; /* Adjust margins to avoid extra space */
+  margin-right: -10px; /* Adjust margins to avoid extra space */
+}
+.view-details-link {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+
+.facebook-logo-wrapper {
+  display: inline-block;
+  width: 32px; /* Adjust the width as needed */
+  height: 32px; /* Adjust the height as needed */
+  border-radius: 50%; /* Makes it circular */
+  overflow: hidden; /* Ensures the logo doesn't overflow */
+  margin-top: 5px; /* Adjust the margin-top as needed */
+}
+
+.facebook-logo {
+  width: 100%;
+  height: auto;
+}
+
+
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin: 0 10px 20px 10px; /* Adjust margin to create space between cards and add top margin */
+  width: 420px; /* Adjust the width to make them a little wider */
+  height: 370px; /* Adjust the height to make them a little less long */
+  display: inline-block; /* Display cards side by side */
+  vertical-align: top; /* Align cards to the top */
+  position: relative;
+}
+
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 150px; /* Adjust the image height as needed */
+  object-fit: cover; /* Ensure the image fills the container */
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 30px; /* Increase the font size for a bold appearance */
+  margin-bottom: 10px; /* Add more margin at the bottom for separation */
+  font-weight: bold; /* Make the text bold */
+  color: darkred; /* Change the text color to a darker shade */
+  text-transform: capitalize; /* Capitalize the first letter of each word */
+}
+
+
+.like-dislike-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.like-dislike-buttons button {
+  margin-right: 5px;
+}
+
+.view-details-link {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.card-img-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 230px; /* Adjust the image height to make it bigger */
+  object-fit: cover; /* Ensure the image fills the container */
+}
+
+.view-details-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,140 @@
+/* Adjusting the position of the search container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.custom-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff1744;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #d50000;
+}
+
+.event-container {
+  margin-top: 90px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 90px ;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.event-image {
+  width: 50%;
+  position: relative;
+}
+
+.event-details {
+  width: 50%;
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #b22222;
+}
+
+.card-text {
+  font-size: 14px;
+  color: black;
+  margin-bottom: 15px;
+}
+#updateButton{
+  font-size: 20px;
+}
+
+.mat-icon {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.custom-button {
+  margin-bottom: 10px;
+}
+
+/* Adjusting the position of the like and dislike buttons */
+.event-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.like-dislike-buttons button {
+  margin-left: 10px;
+}
+
+/* Centering the not found message and making the image bigger */
+.no-events-found-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.no-events-found-message {
+  font-size: 24px;
+  color: #555;
+}
+
+.no-events-found-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 95%;
+  height: auto;
+}
+.button-icon{
+  background-color: #0c5460;
+}

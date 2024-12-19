@@ -1,0 +1,42 @@
+.grid-container {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-item {
+  background-color: black;
+  color: black; /* Text color */
+}
+
+.feedback-card {
+  background-color: #6C7293;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.feedback-card p {
+  margin: 0;
+  color: black; /* Text color */
+}
+
+.feedback-card p strong {
+  font-weight: bold;
+}
+
+.feedback-card p span {
+  color: gold;
+}
+
+.delete-button {
+  background-color: #191C24; /* Red background color */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  padding: 8px 16px; /* Add padding */
+  border-radius: 4px; /* Add border radius */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+.delete-button:hover {
+  background-color: #191C56; /* Darker red background color on hover */
+}

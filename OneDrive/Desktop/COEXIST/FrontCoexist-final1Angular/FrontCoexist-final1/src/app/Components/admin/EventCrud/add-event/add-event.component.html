@@ -1,0 +1,57 @@
+<div class="add-event-container">
+  <h2>Add Event</h2>
+
+  <form (submit)="addEvent()" #eventForm="ngForm">
+
+    <label for="eventName">Event Name</label>
+    <input type="text" class="form-control" id="eventName" [(ngModel)]="event.eventName" name="eventName" required placeholder="Enter Event Name">
+    <div *ngIf="eventForm.controls['eventName'].invalid && (eventForm.controls['eventName'].dirty || eventForm.controls['eventName'].touched)" class="invalid-feedback">
+      Please enter an event name.
+    </div>
+
+
+
+    <label for="eventDescription">Event Description</label>
+    <textarea class="form-control" id="eventDescription" [(ngModel)]="event.eventDescription" name="eventDescription" required placeholder="Enter Event Description"></textarea>
+    <div *ngIf="eventForm.controls['eventDescription'].invalid && (eventForm.controls['eventDescription'].dirty || eventForm.controls['eventDescription'].touched)" class="invalid-feedback">
+      Please enter an event description.
+    </div>
+
+
+
+    <label for="eventDate">Event Date</label>
+    <input type="date" class="form-control" id="eventDate" [(ngModel)]="event.eventDate" name="eventDate" required>
+    <div *ngIf="eventForm.controls['eventDate'].invalid && (eventForm.controls['eventDate'].dirty || eventForm.controls['eventDate'].touched)" class="invalid-feedback">
+      Please enter a valid event date.
+    </div>
+
+
+
+    <label for="eventLocation">Event Location</label>
+    <input type="text" class="form-control" id="eventLocation" [(ngModel)]="event.eventLocation" name="eventLocation" required placeholder="Enter Event Location">
+    <div *ngIf="eventForm.controls['eventLocation'].invalid && (eventForm.controls['eventLocation'].dirty || eventForm.controls['eventLocation'].touched)" class="invalid-feedback">
+      Please enter an event location.
+    </div>
+
+    <label for="totalPlaces">Total Places</label>
+    <input type="number" class="form-control" id="totalPlaces" [(ngModel)]="event.totalPlaces" name="totalPlaces" required placeholder="Enter total places">
+
+    <label for="remainingPlaces">Remaining Places</label>
+    <input type="number" class="form-control" id="remainingPlaces" [(ngModel)]="event.remainingPlaces" name="remainingPlaces" required placeholder="Enter remaining places">
+
+    <label for="pricePerTicket">pricePerTicket</label>
+    <input type="number" class="form-control" id="pricePerTicket" [(ngModel)]="event.pricePerTicket" name="pricePerTicket" required placeholder="Enter pricePerTicket">
+
+
+
+
+    <label for="image">Image</label>
+    <input type="file" class="form-control-file" id="image" (change)="onFileSelected($event)" name="image" accept="image/*">
+    <img *ngIf="imagePreview" [src]="imagePreview" class="img-fluid mt-2" alt="Image Preview" width="250">
+
+
+    <button mat-raised-button color="accent" type="submit" class="btn btn-primary" [disabled]="!eventForm.valid">
+      <mat-icon>add</mat-icon> Add Event
+    </button>
+  </form>
+</div>

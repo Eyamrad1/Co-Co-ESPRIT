@@ -1,0 +1,115 @@
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Front</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 50px;
+    }
+    .custom-link {
+      font-size: 20px; /* Adjust font size as needed */
+      text-decoration: none;
+      color: #007bff; /* Adjust link color as needed */
+      font-weight: bold; /* Adjust font weight as needed */
+      display: flex;
+      align-items: center;
+    }
+
+    .custom-link:hover {
+      color: #0056b3; /* Adjust hover color as needed */
+    }
+
+    .event-details,
+    .weather-card {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      max-width: 400px;
+      width: 100%;
+      margin-top: 80px;
+    }
+
+    .event-details {
+      margin-right: 20px;
+      max-width: 600px; /* Adjust the max-width as needed */
+    }
+
+    .card-img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .weather-icon img {
+      width: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+<div class="container">
+  <!-- Event Details -->
+  <div class="event-details" *ngIf="event">
+    <img class="card-img" [src]="event.imageUrl" alt="Event Image" >
+    <div class="details">
+      <h2>{{ event.eventName }}</h2>
+      <p class="description">{{ event.eventDescription }}</p>
+      <p><strong>Date:</strong> {{ event.eventDate | date: 'medium' }}</p>
+      <p><strong>Location:</strong> {{ event.eventLocation }}</p>
+    </div>
+    <div class="event-actions">
+      <a class="custom-link" title="Click here to leave feedback" (click)="addEvaluation(event.eventId)">
+        <span class="tooltip-text">Leave Feedback</span> <mat-icon>feedback</mat-icon>
+      </a>
+      <div>
+        <h2>Make Reservation</h2>
+        <button (click)="goToReservationForm(event.eventId)">Make Reservation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Weather Card -->
+  <div class="weather-card" *ngIf="weatherForecast[0]">
+    <h2>The weather on this day is:</h2>
+    <h2>Dress well, be safe</h2>
+    <div class="weather-details">
+      <p><strong>Location:</strong> Tunisia</p>
+      <p><strong>Condition:</strong> {{ weatherForecast[0]?.weather[0]?.description }}</p>
+      <p><strong>Temperature:</strong> {{ weatherForecast[0]?.main?.temp }}°C</p>
+      <p><strong>Humidity:</strong> {{ weatherForecast[0]?.main?.humidity }}%</p>
+      <p><strong>Wind Speed:</strong> {{ weatherForecast[0]?.wind?.speed }} km/h</p>
+    </div>
+    <div class="weather-icon">
+      <img *ngIf="weatherForecast[0]?.weather && weatherForecast[0]?.weather.length > 0"
+           [src]="weatherService.getWeatherIconUrl(weatherForecast[0]?.weather[0]?.icon)" alt="Weather Icon">
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+
+
+
+

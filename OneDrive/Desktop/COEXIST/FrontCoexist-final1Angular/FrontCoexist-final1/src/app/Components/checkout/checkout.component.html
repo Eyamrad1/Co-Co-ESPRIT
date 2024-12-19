@@ -1,0 +1,27 @@
+<div class="container">
+  <div >
+    <div *ngFor="let item of wishlistItems" class="card mb-3">
+      <div class="row g-0">
+
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p class="card-text">{{ item.description }}</p>
+            <p class="card-text"><small class="text-muted">Price: {{ item.price }}</small></p>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" [(ngModel)]="selectedQuantity" min="1">
+            <button class="btn btn-danger" (click)="removeFromWishlist(item)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div >
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" [routerLink]="['/product']">Close</button>
+    <button type="button" (click)="pay()" class="btn btn-primary">Pay now</button>
+  </div>
+  <p>Total Selected Price: {{ totalSelectedPrice }}</p>
+</div>

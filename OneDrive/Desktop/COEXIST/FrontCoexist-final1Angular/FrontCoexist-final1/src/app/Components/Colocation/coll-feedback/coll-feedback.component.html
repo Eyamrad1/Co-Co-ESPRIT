@@ -1,0 +1,31 @@
+
+<br><br><br><br><div class="container p-3">
+    <h2 class="text-center">feedBack list</h2>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>id </th>
+        <th>feedBack</th>
+        <th>rate</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let feedBack of allFeedback">
+        <td>{{ feedBack.feedBackId }}</td>
+        <td>{{ feedBack.feed_Back }}</td>
+        <td>{{ feedBack.rate }}</td>
+
+
+      </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="allFeedback.length === 0">
+      <p>No shared accommodation is available at the moment.</p>
+    </div>
+
+
+    <!-- <button (click)="redirectToCreatefeedBack()">Créer une colocation</button> -->
+  </div>

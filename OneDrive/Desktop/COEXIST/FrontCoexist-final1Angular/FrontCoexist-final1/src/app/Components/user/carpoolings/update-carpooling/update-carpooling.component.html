@@ -1,0 +1,59 @@
+<br><br><br><br><br><br><br>
+<h2>Update Carpooling</h2>
+<style>
+  h2 {
+    color: #dc3545;
+    text-align: center;
+  }
+</style>
+<br><br><br>
+<div id="map"></div>
+
+<div class="form-container">
+  <form [formGroup]="carpoolingForm" class="carpooling-form">
+
+    <label for="availableSeats">Available Seats:</label>
+    <input id="availableSeats" type="number" formControlName="availableSeats">
+    {{carpoolingForm.get('availableSeats')?.valid}}
+
+    <label for="costPerSeat">Cost Per Seat:</label>
+    <input id="costPerSeat" type="number" formControlName="costPerSeat" placeholder="Enter cost per seat in dinars">
+    {{carpoolingForm.get('costPerSeat')?.valid}}
+
+    <label for="carpoolingType">Carpooling Type:</label>
+    <select id="carpoolingType" formControlName="carpoolingType">
+      {{carpoolingForm.get('carpoolingType')?.valid}}
+      <option value="DAILY">daily</option>
+      <option value="SPECIFIC">SPECIFIC</option>
+    </select>
+
+    <!-- Conditionally render the Day and Time fields based on the value of carpoolingType -->
+    <div *ngIf="carpoolingForm.get('carpoolingType')?.value === 'DAILY'" class="conditional-fields">
+      <label for="day">Day:</label>
+      <select id="day" formControlName="day">
+        <option value="MONDAY">Monday</option>
+        <option value="TUESDAY">Tuesday</option>
+        <option value="WEDNESDAY">Wednesday</option>
+        <option value="THURSDAY">Thursday</option>
+        <option value="FRIDAY">Friday</option>
+        <!-- Add more options as needed -->
+      </select>
+
+      <label for="time">Time:</label>
+      <input id="time" type="time" formControlName="time">
+    </div>
+
+    <!-- Conditionally render the Departure Time field based on the value of carpoolingType -->
+    <div *ngIf="carpoolingForm.get('carpoolingType')?.value === 'SPECIFIC'" class="conditional-fields">
+      <label for="departureTime">Departure Time:</label>
+      <input id="departureTime" type="datetime-local" formControlName="departureTime">
+    </div>
+
+    <label for="registrationNumber">Registration Number:</label>
+    <input id="registrationNumber" type="text" formControlName="registrationNumber">
+
+    <button type="submit" (click)="updateCarpooling()">Update Carpooling</button>
+    <a href="http://localhost:4200/displayCarpooling" style="color: red; font-size: larger;">back</a>
+
+  </form>
+</div>

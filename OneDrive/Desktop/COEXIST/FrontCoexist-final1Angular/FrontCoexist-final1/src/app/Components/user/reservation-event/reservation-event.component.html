@@ -1,0 +1,49 @@
+<div *ngIf="event" class="reservation-form">
+  <h2>Make Reservation</h2>
+  <div class="reservation-details">
+    <p><strong>Event Name:</strong> {{ event.eventName }}</p>
+    <p><strong>Total Places:</strong> {{ event.totalPlaces }}</p>
+    <p><strong>Remaining Places:</strong> {{ event.remainingPlaces }}</p>
+    <p><strong>Price Per Ticket:</strong> {{ event.pricePerTicket }}</p>
+  </div>
+
+  <form id="reservationForm" autocomplete="off" #eventForm="ngForm">
+    <div class="form-group">
+      <label for="numberOfTickets">Number of Tickets:</label>
+      <input type="number" id="numberOfTickets" name="numberOfTickets" [(ngModel)]="numberOfTickets" class="form-control" required>
+    </div>
+
+    <!-- Total Amount Display -->
+    <p class="total-amount">Total Amount: {{ event.pricePerTicket * numberOfTickets }}</p>
+
+    <!-- Payment Section -->
+    <div class="payment-section">
+      <h3>Please enter your card details for the payment</h3>
+      <div class="form-group">
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" class="form-control" autocomplete="cc-number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cardHolderName">Cardholder Name:</label>
+        <input type="text" id="cardHolderName" name="cardHolderName" [(ngModel)]="cardHolderName" class="form-control" autocomplete="cc-name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date:</label>
+        <input type="text" id="expirationDate" name="expirationDate" [(ngModel)]="expirationDate" placeholder="MM/YYYY" class="form-control" autocomplete="cc-exp" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" [(ngModel)]="cvv" class="form-control" autocomplete="cc-csc" required>
+      </div>
+
+      <!-- Display Total Amount for Payment -->
+      <p class="total-amount">Total Amount: {{ event.pricePerTicket * numberOfTickets }}</p>
+    </div>
+
+    <!-- Make Reservation Button -->
+    <button (click)="makeReservation()" type="submit" class="btn btn-primary" [disabled]="!eventForm.valid">Make Reservation</button>
+  </form>
+</div>
